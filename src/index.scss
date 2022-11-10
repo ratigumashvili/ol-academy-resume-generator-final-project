@@ -3,3 +3,32 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color: #333;
+  font-size: 1.1rem;
+}
+
+a {
+  color: inherit;
+}
+
+.btn {
+  background: unset;
+  border: unset;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.homepage-nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}

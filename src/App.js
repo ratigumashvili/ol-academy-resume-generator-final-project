@@ -9,7 +9,7 @@ import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container-fluid">
       <h1>Resume generator</h1>
       <Routes>
         <Route path="/*" element={<NotFound />} />
