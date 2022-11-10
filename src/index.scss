@@ -32,3 +32,50 @@ a {
   align-items: center;
   gap: 15px;
 }
+
+.color-picker {
+  h4 {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    span {
+      font-weight: normal;
+      text-transform: none;
+    }
+  }
+}
+
+.color-picker-colors {
+  display: grid;
+  grid-template-columns: repeat(6, 35px);
+  gap: 20px;
+
+  .color-picker-item {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+input[type="radio"] {
+  appearance: none;
+  background-color: transparent;
+  margin: 0;
+  color: white;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+input[type="radio"]::before {
+  content: "\221A";
+  font-size: 1rem;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
