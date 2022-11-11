@@ -8,14 +8,7 @@ import SkillsField from "../components/fieldSets/SkillsField";
 import ExperienceField from "../components/fieldSets/ExperienceField";
 import EducationField from "../components/fieldSets/EducationField";
 
-const formValues = {
-  name: "",
-  contacts: "",
-  proffSummary: "",
-  skills: "",
-  experience: "",
-  education: "",
-};
+import { formValues } from "../tempData";
 
 const Create = () => {
   const [searchParams] = useSearchParams();
@@ -34,6 +27,7 @@ const Create = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted");
+    console.log(values);
   };
 
   const [fieldsetPosition, setFieldsetPostition] = useState(0);
