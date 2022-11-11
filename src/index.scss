@@ -25,6 +25,11 @@ a {
   font-size: inherit;
   color: inherit;
   cursor: pointer;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
 }
 
 .btn-cta {
@@ -184,10 +189,20 @@ input[type="radio"]:checked::before {
 }
 
 .resume-form {
+  .resume-form__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    small {
+      color: #dedede;
+    }
+  }
   .resume-form__body {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    min-height: 225px;
 
     input,
     textarea {
@@ -196,9 +211,33 @@ input[type="radio"]:checked::before {
       font-size: inherit;
       color: inherit;
       font-family: inherit;
+      resize: none;
 
       &:focus {
         outline: none;
+      }
+    }
+  }
+  .resume-form__controlls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+
+    .resume-form__main-navigation {
+      display: flex;
+      gap: 15px;
+
+      button {
+        border: solid 1px rgb(225, 225, 225);
+        padding: 10px 15px;
+        border-radius: 5px;
+        color: white;
+        transition: all 0.25s ease;
+
+        &:hover:not(:disabled) {
+          opacity: 0.9;
+        }
       }
     }
   }

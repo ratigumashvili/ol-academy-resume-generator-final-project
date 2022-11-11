@@ -10,7 +10,8 @@ import SkillsField from "../components/fieldSets/SkillsField";
 import ExperienceField from "../components/fieldSets/ExperienceField";
 import EducationField from "../components/fieldSets/EducationField";
 import ProgressBar from "../components/ProgressBar";
-import { getProgressBar } from "../helpers/getProgressBar";
+import { getProgressBar, getCurrent } from "../helpers/helpers";
+import ResumeFormControlls from "../components/ResumeFormControlls";
 
 const Create = () => {
   const [searchParams] = useSearchParams();
@@ -80,29 +81,19 @@ const Create = () => {
   return (
     <div className="resume-form">
       Create {theme} {`#${color}`}
-      <h2>{fieldSetName[fieldsetPosition]}</h2>
+      <h2 className="resume-form__heading">
+        {fieldSetName[fieldsetPosition]}
+        <small>{getCurrent(fieldsetPosition + 1, fieldSetName.length)}</small>
+      </h2>
       <ProgressBar progress={progress} color={color} />
       <form onSubmit={handleSubmit}>
         <div className="resume-form__body">{displayFieldset()}</div>
-        <button
-          type="button"
-          disabled={fieldsetPosition === 0}
-          onClick={() => {
-            setFieldsetPostition((prev) => prev - 1);
-          }}
-        >
-          Prev
-        </button>
-        <button
-          type="button"
-          disabled={fieldsetPosition === fieldSetName.length - 1}
-          onClick={() => setFieldsetPostition((prev) => prev + 1)}
-        >
-          Next
-        </button>
-        {fieldsetPosition === fieldSetName.length - 1 && (
-          <button type="submit">Submit</button>
-        )}
+        <ResumeFormControlls
+          fieldsetPosition={fieldsetPosition}
+          fieldSetName={fieldSetName}
+          setFieldsetPostition={setFieldsetPostition}
+          color={color}
+        />
       </form>
     </div>
   );
