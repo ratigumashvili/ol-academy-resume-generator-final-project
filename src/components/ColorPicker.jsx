@@ -15,17 +15,17 @@ const ColorPicker = ({
             key={item.id}
             className="color-picker-item"
             style={{
-              backgroundColor: `${item.value}`,
+              backgroundColor: `${item.color}`,
             }}
           >
             <input
               type="radio"
               name="color"
-              value={item.value}
+              value={item.color}
               onChange={() => {
                 handlePickColor(item);
               }}
-              checked={item.value === currentColor}
+              checked={item.color === currentColor}
             />
           </div>
         ))}
