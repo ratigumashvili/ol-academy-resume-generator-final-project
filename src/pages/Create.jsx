@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+
+import { fieldSetName, formValues } from "../tempData";
 
 import NameField from "../components/fieldSets/NameField";
 import ContactsField from "../components/fieldSets/ContactsField";
@@ -7,13 +9,15 @@ import ProffesionalSummaryField from "../components/fieldSets/ProffesionalSummar
 import SkillsField from "../components/fieldSets/SkillsField";
 import ExperienceField from "../components/fieldSets/ExperienceField";
 import EducationField from "../components/fieldSets/EducationField";
-
-import { formValues } from "../tempData";
+import ProgressBar from "../components/ProgressBar";
+import { getProgressBar } from "../helpers/getProgressBar";
 
 const Create = () => {
   const [searchParams] = useSearchParams();
   const theme = searchParams.get("theme");
   const color = searchParams.get("color");
+  const [fieldsetPosition, setFieldsetPostition] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [values, setValues] = useState(formValues);
 
   const handleInputChange = (e) => {
@@ -24,21 +28,15 @@ const Create = () => {
     });
   };
 
+  useEffect(() => {
+    const prog = getProgressBar(fieldsetPosition + 1, fieldSetName.length);
+    setProgress(prog);
+  }, [fieldsetPosition]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted");
-    console.log(values);
+    console.log("submitted ", values);
   };
-
-  const [fieldsetPosition, setFieldsetPostition] = useState(0);
-  const fieldSetName = [
-    "Name",
-    "Contacts",
-    "Professional summary",
-    "Skills",
-    "Experience",
-    "Education",
-  ];
 
   const displayFieldset = () => {
     if (fieldsetPosition === 0) {
@@ -83,12 +81,15 @@ const Create = () => {
     <div className="resume-form">
       Create {theme} {`#${color}`}
       <h2>{fieldSetName[fieldsetPosition]}</h2>
+      <ProgressBar progress={progress} color={color} />
       <form onSubmit={handleSubmit}>
         <div className="resume-form__body">{displayFieldset()}</div>
         <button
           type="button"
           disabled={fieldsetPosition === 0}
-          onClick={() => setFieldsetPostition((prev) => prev - 1)}
+          onClick={() => {
+            setFieldsetPostition((prev) => prev - 1);
+          }}
         >
           Prev
         </button>

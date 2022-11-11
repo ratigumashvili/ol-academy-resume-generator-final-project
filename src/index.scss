@@ -203,3 +203,15 @@ input[type="radio"]:checked::before {
     }
   }
 }
+
+.progress {
+  border: solid 1px rgb(225, 225, 225);
+  height: 20px;
+  position: relative;
+  margin: 1rem 0;
+
+  span {
+    position: absolute;
+    height: 100%;
+  }
+}

@@ -26,6 +26,15 @@ export const themes = [
   },
 ];
 
+export const fieldSetName = [
+  "Name",
+  "Contacts",
+  "Professional summary",
+  "Skills",
+  "Experience",
+  "Education",
+];
+
 export const formValues = {
   name: "",
   contacts: "",

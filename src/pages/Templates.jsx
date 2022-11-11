@@ -36,7 +36,7 @@ const Templates = () => {
       pathname: "/create",
       search: createSearchParams({
         theme: theme.name,
-        color: currentColor.toString().slice(2),
+        color: currentColor.toString().slice(1),
       }).toString(),
     });
   };
