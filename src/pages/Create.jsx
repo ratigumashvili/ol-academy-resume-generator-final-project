@@ -6,7 +6,7 @@ const Create = () => {
   const color = searchParams.get("color");
   return (
     <div>
-      Create {theme} {color}
+      Create {theme} {`#${color}`}
     </div>
   );
 };
