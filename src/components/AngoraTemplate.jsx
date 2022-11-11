@@ -2,6 +2,7 @@ const AngoraTemplate = ({ currentColor }) => {
   return (
     <div className="cv-template angora">
       <h1 style={{ color: `${currentColor}` }}>Jhon Doe</h1>
+      <h2 style={{ color: `${currentColor}` }}>Contacts</h2>
       <p className="cv-template-address">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />{" "}
         Voluptatum impedit ab error commodi ratione <br /> ducimus consequuntur!
