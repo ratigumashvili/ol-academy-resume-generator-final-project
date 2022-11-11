@@ -10,8 +10,10 @@ import SkillsField from "../components/fieldSets/SkillsField";
 import ExperienceField from "../components/fieldSets/ExperienceField";
 import EducationField from "../components/fieldSets/EducationField";
 import ProgressBar from "../components/ProgressBar";
-import { getProgressBar, getCurrent } from "../helpers/helpers";
 import ResumeFormControlls from "../components/ResumeFormControlls";
+import AngoraTemplate from "../components/AngoraTemplate";
+import BlueprintTemplate from "../components/BlueprintTemplate";
+import { getProgressBar, getCurrent } from "../helpers/helpers";
 
 const Create = () => {
   const [searchParams] = useSearchParams();
@@ -79,22 +81,44 @@ const Create = () => {
   };
 
   return (
-    <div className="resume-form">
-      Create {theme} {`#${color}`}
-      <h2 className="resume-form__heading">
-        {fieldSetName[fieldsetPosition]}
-        <small>{getCurrent(fieldsetPosition + 1, fieldSetName.length)}</small>
-      </h2>
-      <ProgressBar progress={progress} color={color} />
-      <form onSubmit={handleSubmit}>
-        <div className="resume-form__body">{displayFieldset()}</div>
-        <ResumeFormControlls
-          fieldsetPosition={fieldsetPosition}
-          fieldSetName={fieldSetName}
-          setFieldsetPostition={setFieldsetPostition}
-          color={color}
-        />
-      </form>
+    <div className="row">
+      <div className="col-sm-12 col-lg-5">
+        <div className="resume-form">
+          <h2 className="resume-form__heading">
+            {fieldSetName[fieldsetPosition]}
+            <small>
+              {getCurrent(fieldsetPosition + 1, fieldSetName.length)}
+            </small>
+          </h2>
+          <ProgressBar progress={progress} color={color} />
+          <form onSubmit={handleSubmit}>
+            <div className="resume-form__body">{displayFieldset()}</div>
+            <ResumeFormControlls
+              fieldsetPosition={fieldsetPosition}
+              fieldSetName={fieldSetName}
+              setFieldsetPostition={setFieldsetPostition}
+              color={color}
+            />
+          </form>
+        </div>
+      </div>
+      <div className="col-sm-12 col-lg-7">
+        <h2>
+          preview {theme} {`#${color}`}
+        </h2>
+        {theme === "Angora" && (
+          <AngoraTemplate
+            color={`#${color}`}
+            name={values.name}
+            contacts={values.contacts}
+            proffSumarry={values.proffSummary}
+            skills={values.skills}
+            experience={values.experience}
+            education={values.education}
+          />
+        )}
+        {theme === "Blueprint" && <BlueprintTemplate color={`#${color}`} />}
+      </div>
     </div>
   );
 };

@@ -1,53 +1,43 @@
-const BlueprintTemplate = ({ currentColor }) => {
+const BlueprintTemplate = (props) => {
   return (
     <div className="cv-template blueprint">
-      <h1 style={{ color: `${currentColor}` }}>Jhon Doe</h1>
+      <h1 style={{ color: `${props.color}` }}>
+        {props.name ? props.name : "Jhon Doe"}
+      </h1>
       <div className="content">
         <div className="left">
-          <h2 style={{ color: `${currentColor}` }}>Contacts</h2>
+          <h2 style={{ color: `${props.color}` }}>Contacts</h2>
           <p className="cv-template-address">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />{" "}
-            Voluptatum impedit ab error commodi ratione <br /> ducimus
-            consequuntur! Nostrum esse.
+            {props.contacts
+              ? props.contacts
+              : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
           </p>
-          <h2 style={{ color: `${currentColor}` }}>Professional summary</h2>
-          <ul>
-            <li>1 text</li>
-            <li>2 text</li>
-            <li>3 text</li>
-            <li>4 text</li>
-            <li>5 text</li>
-            <li>6 text</li>
-          </ul>
-          <h2 style={{ color: `${currentColor}` }}>Skills</h2>
-          <ul>
-            <li>1 text</li>
-            <li>2 text</li>
-            <li>3 text</li>
-            <li>4 text</li>
-            <li>5 text</li>
-            <li>6 text</li>
-          </ul>
+          <h2 style={{ color: `${props.color}` }}>Professional summary</h2>
+          <p>
+            {props.proffSumarry
+              ? props.proffSumarry
+              : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
+          </p>
+          <h2 style={{ color: `${props.color}` }}>Skills</h2>
+          <p>
+            {props.skills
+              ? props.skills
+              : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
+          </p>
         </div>
         <div className="right">
-          <h2 style={{ color: `${currentColor}` }}>Experience</h2>
-          <ul>
-            <li>1 text</li>
-            <li>2 text</li>
-            <li>3 text</li>
-            <li>4 text</li>
-            <li>5 text</li>
-            <li>6 text</li>
-          </ul>
-          <h2 style={{ color: `${currentColor}` }}>Education</h2>
-          <ul>
-            <li>1 text</li>
-            <li>2 text</li>
-            <li>3 text</li>
-            <li>4 text</li>
-            <li>5 text</li>
-            <li>6 text</li>
-          </ul>
+          <h2 style={{ color: `${props.color}` }}>Experience</h2>
+          <p>
+            {props.experience
+              ? props.experience
+              : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
+          </p>
+          <h2 style={{ color: `${props.color}` }}>Education</h2>
+          <p>
+            {props.education
+              ? props.education
+              : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
+          </p>
         </div>
       </div>
     </div>
