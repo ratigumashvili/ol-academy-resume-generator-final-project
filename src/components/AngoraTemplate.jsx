@@ -1,3 +1,5 @@
+import ReactMarkdown from "react-markdown";
+
 const AngoraTemplate = (props) => {
   return (
     <div className="cv-template angora">
@@ -5,35 +7,35 @@ const AngoraTemplate = (props) => {
         {props.name ? props.name : "Jhon Doe"}
       </h1>
       <h2 style={{ color: `${props.color}` }}>Contacts</h2>
-      <p className="cv-template-address">
+      <ReactMarkdown>
         {props.contacts
           ? props.contacts
           : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
-      </p>
+      </ReactMarkdown>
       <h2 style={{ color: `${props.color}` }}>Professional Sumarry</h2>
-      <p>
+      <ReactMarkdown>
         {props.proffSumarry
           ? props.proffSumarry
           : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
-      </p>
+      </ReactMarkdown>
       <h2 style={{ color: `${props.color}` }}>Skills</h2>
-      <p>
+      <ReactMarkdown>
         {props.skills
           ? props.skills
           : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
-      </p>
+      </ReactMarkdown>
       <h2 style={{ color: `${props.color}` }}>Experience</h2>
-      <p>
+      <ReactMarkdown>
         {props.experience
           ? props.experience
           : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
-      </p>
+      </ReactMarkdown>
       <h2 style={{ color: `${props.color}` }}>Education</h2>
-      <p>
+      <ReactMarkdown>
         {props.education
           ? props.education
           : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
-      </p>
+      </ReactMarkdown>
     </div>
   );
 };

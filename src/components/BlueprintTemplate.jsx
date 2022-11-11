@@ -1,3 +1,5 @@
+import ReactMarkdown from "react-markdown";
+
 const BlueprintTemplate = (props) => {
   return (
     <div className="cv-template blueprint">
@@ -7,37 +9,37 @@ const BlueprintTemplate = (props) => {
       <div className="content">
         <div className="left">
           <h2 style={{ color: `${props.color}` }}>Contacts</h2>
-          <p className="cv-template-address">
+          <ReactMarkdown>
             {props.contacts
               ? props.contacts
               : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
-          </p>
+          </ReactMarkdown>
           <h2 style={{ color: `${props.color}` }}>Professional summary</h2>
-          <p>
+          <ReactMarkdown>
             {props.proffSumarry
               ? props.proffSumarry
               : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
-          </p>
+          </ReactMarkdown>
           <h2 style={{ color: `${props.color}` }}>Skills</h2>
-          <p>
+          <ReactMarkdown>
             {props.skills
               ? props.skills
               : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
-          </p>
+          </ReactMarkdown>
         </div>
         <div className="right">
           <h2 style={{ color: `${props.color}` }}>Experience</h2>
-          <p>
+          <ReactMarkdown>
             {props.experience
               ? props.experience
               : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
-          </p>
+          </ReactMarkdown>
           <h2 style={{ color: `${props.color}` }}>Education</h2>
-          <p>
+          <ReactMarkdown>
             {props.education
               ? props.education
               : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
-          </p>
+          </ReactMarkdown>
         </div>
       </div>
     </div>

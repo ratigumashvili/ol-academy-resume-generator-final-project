@@ -110,6 +110,29 @@ input[type="radio"]:checked::before {
   transform: scale(1);
 }
 
+.preview {
+  border-top: solid 1px rgba(0, 0, 0, 0.06);
+  border-left: solid 1px rgba(0, 0, 0, 0.06);
+  border-right: solid 1px rgba(0, 0, 0, 0.06);
+  box-shadow: 1px 14px 5px -11px rgba(0, 0, 0, 0.14);
+  -webkit-box-shadow: 1px 14px 5px -11px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 1px 14px 5px -11px rgba(0, 0, 0, 0.14);
+  margin-bottom: 2rem;
+}
+
+.cv-template {
+  font-size: 1rem;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  h2,
+  p {
+    margin-bottom: 15px;
+  }
+}
+
 .theme-wrapper {
   position: relative;
   min-height: 690px;
@@ -174,18 +197,6 @@ input[type="radio"]:checked::before {
 .angora,
 .blueprint {
   padding: 40px;
-  h1,
-  h2,
-  ul,
-  p {
-    margin-bottom: 10px;
-  }
-  p {
-    line-height: 1rem;
-  }
-  ul {
-    list-style: none;
-  }
 }
 
 .resume-form {

@@ -103,21 +103,31 @@ const Create = () => {
         </div>
       </div>
       <div className="col-sm-12 col-lg-7">
-        <h2>
-          preview {theme} {`#${color}`}
-        </h2>
-        {theme === "Angora" && (
-          <AngoraTemplate
-            color={`#${color}`}
-            name={values.name}
-            contacts={values.contacts}
-            proffSumarry={values.proffSummary}
-            skills={values.skills}
-            experience={values.experience}
-            education={values.education}
-          />
-        )}
-        {theme === "Blueprint" && <BlueprintTemplate color={`#${color}`} />}
+        <div className="preview">
+          {theme === "Angora" && (
+            <AngoraTemplate
+              color={`#${color}`}
+              name={values.name}
+              contacts={values.contacts}
+              proffSumarry={values.proffSummary}
+              skills={values.skills}
+              experience={values.experience}
+              education={values.education}
+            />
+          )}
+          {theme === "Blueprint" && (
+            <BlueprintTemplate
+              color={`#${color}`}
+              name={values.name}
+              contacts={values.contacts}
+              proffSumarry={values.proffSummary}
+              skills={values.skills}
+              experience={values.experience}
+              education={values.education}
+            />
+          )}
+        </div>
+        <h2>Theme title: {theme}</h2>
       </div>
     </div>
   );
