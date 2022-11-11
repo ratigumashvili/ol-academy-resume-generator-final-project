@@ -182,3 +182,24 @@ input[type="radio"]:checked::before {
     list-style: none;
   }
 }
+
+.resume-form {
+  .resume-form__body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    input,
+    textarea {
+      padding: 15px;
+      border: solid 1px rgb(225, 225, 225);
+      font-size: inherit;
+      color: inherit;
+      font-family: inherit;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
