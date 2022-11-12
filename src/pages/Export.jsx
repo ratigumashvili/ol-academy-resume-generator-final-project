@@ -49,21 +49,26 @@ const Export = () => {
         )}
       </div>
       <div className="export-controlls">
-        <button
-          className="btn"
-          onClick={() => exportAsImage(exportRef.current, "cv-image")}
-        >
-          Export img
-        </button>
-        <button className="btn" onClick={handlePrint}>
-          Export Pdf
-        </button>
-        <button
-          className="btn"
-          onClick={() => exportAsJson(data, "cv-json.json")}
-        >
-          Export JSON
-        </button>
+        <div className="left">
+          <button
+            className="btn"
+            onClick={() => exportAsImage(exportRef.current, "cv-image")}
+          >
+            Export img
+          </button>
+          <button className="btn" onClick={handlePrint}>
+            Export Pdf
+          </button>
+          <button
+            className="btn"
+            onClick={() => exportAsJson(data, "cv-json.json")}
+          >
+            Export JSON
+          </button>
+        </div>
+        <div className="right">
+          <button className="btn btn-cta">Build new resume</button>
+        </div>
       </div>
     </div>
   );
