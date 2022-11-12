@@ -38,8 +38,7 @@ const Templates = () => {
       pathname: "/create",
       search: createSearchParams({
         theme: theme.name,
-        color: currentColor.toString().slice(1),
-        colorname: pickedColor,
+        color: pickedColor,
       }).toString(),
     });
   };
@@ -54,7 +53,6 @@ const Templates = () => {
             pallete={pallete}
             currentPallete={currentPallete}
             currentColor={currentColor}
-            pickedColor={pickedColor}
             handlePickColor={handlePickColor}
           />
         </div>

@@ -5,7 +5,7 @@ const ProgressBar = ({ progress, color }) => {
         className="bar"
         style={{
           width: `${progress.toFixed(2)}%`,
-          backgroundColor: `#${color}`,
+          backgroundColor: color,
         }}
       ></span>
     </div>

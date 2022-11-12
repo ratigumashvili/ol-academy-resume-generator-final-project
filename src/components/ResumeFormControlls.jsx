@@ -9,7 +9,7 @@ const ResumeFormControlls = ({
       <div className="resume-form__main-navigation">
         <button
           className="btn"
-          style={{ backgroundColor: `#${color}` }}
+          style={{ backgroundColor: color }}
           type="button"
           disabled={fieldsetPosition === 0}
           onClick={() => {
@@ -20,7 +20,7 @@ const ResumeFormControlls = ({
         </button>
         <button
           className="btn"
-          style={{ backgroundColor: `#${color}` }}
+          style={{ backgroundColor: color }}
           type="button"
           disabled={fieldsetPosition === fieldSetName.length - 1}
           onClick={() => setFieldsetPostition((prev) => prev + 1)}

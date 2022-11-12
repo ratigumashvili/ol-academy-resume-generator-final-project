@@ -20,7 +20,6 @@ const Create = () => {
   const [searchParams] = useSearchParams();
   const theme = searchParams.get("theme");
   const color = searchParams.get("color");
-  const colorName = searchParams.get("colorname");
   const [fieldsetPosition, setFieldsetPostition] = useState(0);
   const [progress, setProgress] = useState(0);
   const [values, setValues] = useState(formValues);
@@ -92,14 +91,14 @@ const Create = () => {
               {getCurrent(fieldsetPosition + 1, fieldSetName.length)}
             </small>
           </h2>
-          <ProgressBar progress={progress} color={color} />
+          <ProgressBar progress={progress} color={colourNameToHex(color)} />
           <form onSubmit={handleSubmit}>
             <div className="resume-form__body">{displayFieldset()}</div>
             <ResumeFormControlls
               fieldsetPosition={fieldsetPosition}
               fieldSetName={fieldSetName}
               setFieldsetPostition={setFieldsetPostition}
-              color={color}
+              color={colourNameToHex(color)}
             />
           </form>
         </div>
@@ -108,7 +107,7 @@ const Create = () => {
         <div className="preview">
           {theme === "Angora" && (
             <AngoraTemplate
-              color={`#${color}`}
+              color={colourNameToHex(color)}
               name={values.name}
               contacts={values.contacts}
               proffSumarry={values.proffSummary}
@@ -119,7 +118,7 @@ const Create = () => {
           )}
           {theme === "Blueprint" && (
             <BlueprintTemplate
-              color={`#${color}`}
+              color={colourNameToHex(color)}
               name={values.name}
               contacts={values.contacts}
               proffSumarry={values.proffSummary}
@@ -130,7 +129,7 @@ const Create = () => {
           )}
         </div>
         <h2>
-          Theme title: {theme} {colorName} {colourNameToHex(colorName)}
+          Theme title: {theme} {color} {colourNameToHex(color)}
         </h2>
       </div>
     </div>

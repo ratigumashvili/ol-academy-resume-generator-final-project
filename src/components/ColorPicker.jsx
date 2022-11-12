@@ -2,7 +2,6 @@ const ColorPicker = ({
   pallete,
   currentPallete,
   currentColor,
-  pickedColor,
   handlePickColor,
 }) => {
   return (
