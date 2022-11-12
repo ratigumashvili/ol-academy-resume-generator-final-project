@@ -13,7 +13,7 @@ import ProgressBar from "../components/ProgressBar";
 import ResumeFormControlls from "../components/ResumeFormControlls";
 import AngoraTemplate from "../components/AngoraTemplate";
 import BlueprintTemplate from "../components/BlueprintTemplate";
-import { getProgressBar, getCurrent } from "../helpers/helpers";
+import { getProgressBar, getCurrent, getEmptyValues } from "../helpers/helpers";
 import { colourNameToHex } from "../helpers/getColor";
 
 const Create = () => {
@@ -104,7 +104,13 @@ const Create = () => {
         </div>
       </div>
       <div className="col-sm-12 col-lg-7">
-        <div className="preview">
+        <h2 style={{ marginBottom: "1rem" }}>Current theme: {theme}</h2>
+        <div
+          className="preview"
+          style={
+            getEmptyValues(values) ? { display: "none" } : { display: "block" }
+          }
+        >
           {theme === "Angora" && (
             <AngoraTemplate
               color={colourNameToHex(color)}
@@ -128,7 +134,6 @@ const Create = () => {
             />
           )}
         </div>
-        <h2>Theme title: {theme}</h2>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 const AngoraTemplate = (props) => {
   return (
     <div className="cv-template angora">
-      <h1 style={{ color: `${props.color}` }}>{props.name}</h1>
+      {props.name && <h1 style={{ color: `${props.color}` }}>{props.name}</h1>}
       {props.contacts && (
         <>
           <h2 style={{ color: `${props.color}` }}>Contacts</h2>

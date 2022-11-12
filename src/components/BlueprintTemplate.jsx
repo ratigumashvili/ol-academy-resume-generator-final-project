@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 const BlueprintTemplate = (props) => {
   return (
     <div className="cv-template blueprint">
-      <h1 style={{ color: `${props.color}` }}>{props.name}</h1>
+      {props.name && <h1 style={{ color: `${props.color}` }}>{props.name}</h1>}
       <div className="content">
         <div className="left">
           {props.contacts && (

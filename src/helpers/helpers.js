@@ -5,3 +5,7 @@ export const getProgressBar = (curr, total) => {
 export const getCurrent = (curr, total) => {
   return curr + " / " + total;
 };
+
+export const getEmptyValues = (obj) => {
+  return Object.values(obj).every((item) => item === "");
+};
