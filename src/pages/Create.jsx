@@ -14,11 +14,13 @@ import ResumeFormControlls from "../components/ResumeFormControlls";
 import AngoraTemplate from "../components/AngoraTemplate";
 import BlueprintTemplate from "../components/BlueprintTemplate";
 import { getProgressBar, getCurrent } from "../helpers/helpers";
+import { colourNameToHex } from "../helpers/getColor";
 
 const Create = () => {
   const [searchParams] = useSearchParams();
   const theme = searchParams.get("theme");
   const color = searchParams.get("color");
+  const colorName = searchParams.get("colorname");
   const [fieldsetPosition, setFieldsetPostition] = useState(0);
   const [progress, setProgress] = useState(0);
   const [values, setValues] = useState(formValues);
@@ -127,7 +129,9 @@ const Create = () => {
             />
           )}
         </div>
-        <h2>Theme title: {theme}</h2>
+        <h2>
+          Theme title: {theme} {colorName} {colourNameToHex(colorName)}
+        </h2>
       </div>
     </div>
   );

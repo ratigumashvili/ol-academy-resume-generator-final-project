@@ -10,6 +10,7 @@ const Templates = () => {
   const [currentColor, setCurrentColor] = useState("#000000");
   const [currentTheme, setCurrentTheme] = useState(0);
   const [theme, setTheme] = useState(themes[0]);
+  const [pickedColor, setPickedColor] = useState("");
 
   const navigate = useNavigate();
 
@@ -20,6 +21,7 @@ const Templates = () => {
   const handlePickColor = (item) => {
     setCurrentPallete(item.id - 1);
     setCurrentColor(item.color);
+    setPickedColor(item.name.toLowerCase().replaceAll(/\s/g, ""));
   };
 
   const handleThemeChange = () => {
@@ -37,6 +39,7 @@ const Templates = () => {
       search: createSearchParams({
         theme: theme.name,
         color: currentColor.toString().slice(1),
+        colorname: pickedColor,
       }).toString(),
     });
   };
@@ -51,6 +54,7 @@ const Templates = () => {
             pallete={pallete}
             currentPallete={currentPallete}
             currentColor={currentColor}
+            pickedColor={pickedColor}
             handlePickColor={handlePickColor}
           />
         </div>
