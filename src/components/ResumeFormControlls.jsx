@@ -29,7 +29,9 @@ const ResumeFormControlls = ({
         </button>
       </div>
       {fieldsetPosition === fieldSetName.length - 1 && (
-        <button type="submit">Submit</button>
+        <button className="btn btn-submit" type="submit">
+          Generate
+        </button>
       )}
     </div>
   );
