@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <h1>
+    <h3>
       Page not found, <Link to="/">Go home</Link>
-    </h1>
+    </h3>
   );
 };
 

@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Templates from "./pages/Templates";
 import Create from "./pages/Create";
+import Export from "./pages/Export";
 import Edit from "./pages/Edit";
 import Stored from "./pages/Stored";
 import NotFound from "./pages/NotFound";
@@ -16,6 +17,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/choose-template" element={<Templates />} />
         <Route path="/create/" element={<Create />} />
+        <Route path="/export" element={<Export />} />
         <Route path="/import-resume" element={<Edit />} />
         <Route path="/stored_resumes" element={<Stored />} />
       </Routes>
