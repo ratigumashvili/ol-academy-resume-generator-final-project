@@ -6,6 +6,7 @@ import BlueprintTemplate from "../components/BlueprintTemplate";
 
 import { colourNameToHex } from "../helpers/getColor";
 import exportAsImage from "../helpers/getHtmlToCanvas";
+import exportAsJson from "../helpers/getJsonData";
 
 const Export = () => {
   const data = JSON.parse(localStorage.getItem("generatedResume"));
@@ -47,11 +48,23 @@ const Export = () => {
           />
         )}
       </div>
-      <button onClick={() => exportAsImage(exportRef.current, "cv-image")}>
-        Export img
-      </button>
-      <button onClick={handlePrint}>Export Pdf</button>
-      <button>Export JSON</button>
+      <div className="export-controlls">
+        <button
+          className="btn"
+          onClick={() => exportAsImage(exportRef.current, "cv-image")}
+        >
+          Export img
+        </button>
+        <button className="btn" onClick={handlePrint}>
+          Export Pdf
+        </button>
+        <button
+          className="btn"
+          onClick={() => exportAsJson(data, "cv-json.json")}
+        >
+          Export JSON
+        </button>
+      </div>
     </div>
   );
 };
