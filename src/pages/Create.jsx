@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 import { fieldSetName, formValues } from "../tempData";
 
@@ -24,6 +24,8 @@ const Create = () => {
   const [progress, setProgress] = useState(0);
   const [values, setValues] = useState(formValues);
 
+  const navigate = useNavigate();
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues({
@@ -39,7 +41,12 @@ const Create = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted ", values);
+    if (getEmptyValues(values)) {
+      return;
+    }
+    const newObj = [values, theme, color];
+    localStorage.setItem("generatedResume", JSON.stringify(newObj));
+    navigate("/export");
   };
 
   const displayFieldset = () => {
@@ -99,6 +106,7 @@ const Create = () => {
               fieldSetName={fieldSetName}
               setFieldsetPostition={setFieldsetPostition}
               color={colourNameToHex(color)}
+              values={values}
             />
           </form>
         </div>

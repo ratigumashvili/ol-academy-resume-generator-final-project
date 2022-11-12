@@ -1,8 +1,11 @@
+import { getEmptyValues } from "../helpers/helpers";
+
 const ResumeFormControlls = ({
   fieldsetPosition,
   fieldSetName,
   setFieldsetPostition,
   color,
+  values,
 }) => {
   return (
     <div className="resume-form__controlls">
@@ -29,7 +32,11 @@ const ResumeFormControlls = ({
         </button>
       </div>
       {fieldsetPosition === fieldSetName.length - 1 && (
-        <button className="btn btn-submit" type="submit">
+        <button
+          className="btn btn-submit"
+          type="submit"
+          disabled={getEmptyValues(values)}
+        >
           Generate
         </button>
       )}
