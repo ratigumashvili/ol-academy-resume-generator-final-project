@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 
 import AngoraTemplate from "../components/AngoraTemplate";
 import BlueprintTemplate from "../components/BlueprintTemplate";
@@ -14,6 +15,10 @@ const Export = () => {
   const color = data[2];
 
   const exportRef = useRef();
+
+  const handlePrint = useReactToPrint({
+    content: () => exportRef.current,
+  });
 
   return (
     <div>
@@ -45,7 +50,7 @@ const Export = () => {
       <button onClick={() => exportAsImage(exportRef.current, "cv-image")}>
         Export img
       </button>
-      <button>Export Pdf</button>
+      <button onClick={handlePrint}>Export Pdf</button>
       <button>Export JSON</button>
     </div>
   );
