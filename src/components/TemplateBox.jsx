@@ -3,7 +3,9 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import AngoraTemplate from "./AngoraTemplate";
 import BlueprintTemplate from "./BlueprintTemplate";
 
-const TemplateBox = ({ currentColor, handleThemeChange, theme }) => {
+import { colourNameToHex } from "../helpers/getColor";
+
+const TemplateBox = ({ pickedColor, handleThemeChange, theme }) => {
   return (
     <div className="theme-wrapper">
       <button className="theme-change next" onClick={handleThemeChange}>
@@ -11,7 +13,7 @@ const TemplateBox = ({ currentColor, handleThemeChange, theme }) => {
       </button>
       {theme.name === "Angora" && (
         <AngoraTemplate
-          color={currentColor}
+          color={colourNameToHex(pickedColor)}
           name="Jhon Doe"
           contacts="Puy your contact information here"
           proffSumarry="Text describing your professional summary"
@@ -22,7 +24,7 @@ const TemplateBox = ({ currentColor, handleThemeChange, theme }) => {
       )}
       {theme.name === "Blueprint" && (
         <BlueprintTemplate
-          color={currentColor}
+          color={colourNameToHex(pickedColor)}
           name="Jhon Doe"
           contacts="Puy your contact information here"
           proffSumarry="Text describing your professional summary"

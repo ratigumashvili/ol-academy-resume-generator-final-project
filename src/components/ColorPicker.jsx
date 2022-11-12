@@ -1,7 +1,9 @@
+import { colourNameToHex } from "../helpers/getColor";
+
 const ColorPicker = ({
   pallete,
   currentPallete,
-  currentColor,
+  pickedColor,
   handlePickColor,
 }) => {
   return (
@@ -25,7 +27,7 @@ const ColorPicker = ({
               onChange={() => {
                 handlePickColor(item);
               }}
-              checked={item.color === currentColor}
+              checked={item.color === colourNameToHex(pickedColor)}
             />
           </div>
         ))}

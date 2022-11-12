@@ -128,9 +128,7 @@ const Create = () => {
             />
           )}
         </div>
-        <h2>
-          Theme title: {theme} {color} {colourNameToHex(color)}
-        </h2>
+        <h2>Theme title: {theme}</h2>
       </div>
     </div>
   );

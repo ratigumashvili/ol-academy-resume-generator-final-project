@@ -7,10 +7,9 @@ import { pallete, themes } from "../tempData";
 
 const Templates = () => {
   const [currentPallete, setCurrentPallete] = useState(0);
-  const [currentColor, setCurrentColor] = useState("#000000");
+  const [pickedColor, setPickedColor] = useState("classicblack");
   const [currentTheme, setCurrentTheme] = useState(0);
   const [theme, setTheme] = useState(themes[0]);
-  const [pickedColor, setPickedColor] = useState("");
 
   const navigate = useNavigate();
 
@@ -20,7 +19,6 @@ const Templates = () => {
 
   const handlePickColor = (item) => {
     setCurrentPallete(item.id - 1);
-    setCurrentColor(item.color);
     setPickedColor(item.name.toLowerCase().replaceAll(/\s/g, ""));
   };
 
@@ -52,13 +50,13 @@ const Templates = () => {
           <ColorPicker
             pallete={pallete}
             currentPallete={currentPallete}
-            currentColor={currentColor}
+            pickedColor={pickedColor}
             handlePickColor={handlePickColor}
           />
         </div>
         <div className="col-sm-12 col-md-6">
           <TemplateBox
-            currentColor={currentColor}
+            pickedColor={pickedColor}
             theme={theme}
             handleThemeChange={handleThemeChange}
           />
