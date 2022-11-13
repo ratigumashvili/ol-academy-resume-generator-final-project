@@ -16,7 +16,7 @@ function App() {
         <Route path="/*" element={<NotFound />} />
         <Route index element={<Home />} />
         <Route path="/choose-template" element={<Templates />} />
-        <Route path="/create/" element={<Create />} />
+        <Route path="/create" element={<Create />} />
         <Route path="/export" element={<Export />} />
         <Route path="/import-resume" element={<Edit />} />
         <Route path="/stored_resumes" element={<Stored />} />
