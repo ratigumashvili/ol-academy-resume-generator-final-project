@@ -19,6 +19,7 @@ import { colourNameToHex } from "../helpers/getColor";
 
 const Create = () => {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const theme = searchParams.get("theme");
   const color = searchParams.get("color");
   const [fieldsetPosition, setFieldsetPostition] = useState(0);
@@ -28,8 +29,6 @@ const Create = () => {
   useEffect(() => {
     localStorage.setItem("form", JSON.stringify(values));
   }, [values]);
-
-  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
