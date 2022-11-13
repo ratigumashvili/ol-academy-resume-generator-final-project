@@ -1,18 +1,26 @@
+import { useEffect, useState } from "react";
 import { Link, createSearchParams, useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const data = JSON.parse(localStorage.getItem("generatedResume"));
+  const [local, setLocal] = useState({});
+  const template = localStorage.getItem("template");
   const formValues = localStorage.getItem("form");
-  const theme = data[1];
-  const color = data[2];
+
+  useEffect(() => {
+    if (!template || !formValues) {
+      return;
+    }
+    setLocal(JSON.parse(localStorage.getItem("template")));
+  }, [formValues, template]);
+
   const navigate = useNavigate();
 
   const handleNavigateWithParams = () => {
     navigate({
       pathname: "/create",
       search: createSearchParams({
-        theme: theme,
-        color: color,
+        theme: local.theme,
+        color: local.color,
       }).toString(),
     });
   };

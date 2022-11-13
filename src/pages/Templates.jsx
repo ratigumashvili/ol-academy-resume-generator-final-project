@@ -39,6 +39,8 @@ const Templates = () => {
         color: pickedColor,
       }).toString(),
     });
+    const newObj = { theme: theme.name, color: pickedColor };
+    localStorage.setItem("template", JSON.stringify(newObj));
   };
 
   return (
