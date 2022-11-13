@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 
-import { fieldSetName, formValues } from "../tempData";
+import { fieldSetName } from "../tempData";
+import { getFormData } from "../helpers/getFormData";
 
 import NameField from "../components/fieldSets/NameField";
 import ContactsField from "../components/fieldSets/ContactsField";
@@ -22,7 +23,11 @@ const Create = () => {
   const color = searchParams.get("color");
   const [fieldsetPosition, setFieldsetPostition] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [values, setValues] = useState(formValues);
+  const [values, setValues] = useState(getFormData);
+
+  useEffect(() => {
+    localStorage.setItem("form", JSON.stringify(values));
+  }, [values]);
 
   const navigate = useNavigate();
 
@@ -46,6 +51,7 @@ const Create = () => {
     }
     const newObj = [values, theme, color];
     localStorage.setItem("generatedResume", JSON.stringify(newObj));
+    localStorage.removeItem("form");
     navigate("/export");
   };
 
