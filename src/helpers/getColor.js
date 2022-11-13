@@ -14,8 +14,8 @@ export const colourNameToHex = (colour) => {
     autumnmustard: "#D39D2A",
   };
 
-  if (typeof colours[colour.toLowerCase()] != "undefined")
-    return colours[colour.toLowerCase()];
+  if (typeof colours[colour.toLowerCase().replaceAll(/\s/g, "")] != "undefined")
+    return colours[colour.toLowerCase().replaceAll(/\s/g, "")];
 
   return false;
 };

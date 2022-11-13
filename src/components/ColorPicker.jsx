@@ -17,17 +17,19 @@ const ColorPicker = ({
             key={item.id}
             className="color-picker-item"
             style={{
-              backgroundColor: `${item.color}`,
+              backgroundColor: colourNameToHex(item.name),
             }}
           >
             <input
               type="radio"
               name="color"
-              value={item.color}
+              value={colourNameToHex(item.name)}
               onChange={() => {
                 handlePickColor(item);
               }}
-              checked={item.color === colourNameToHex(pickedColor)}
+              checked={
+                colourNameToHex(item.name) === colourNameToHex(pickedColor)
+              }
             />
           </div>
         ))}
