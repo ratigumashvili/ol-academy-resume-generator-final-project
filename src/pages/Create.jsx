@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 
 import { fieldSetName } from "../tempData";
-import { getFormData } from "../helpers/getFormData";
+// import { getFormData } from "../helpers/getFormData";
 
 import NameField from "../components/fieldSets/NameField";
 import ContactsField from "../components/fieldSets/ContactsField";
@@ -17,14 +17,14 @@ import BlueprintTemplate from "../components/BlueprintTemplate";
 import { getProgressBar, getCurrent, getEmptyValues } from "../helpers/helpers";
 import { colourNameToHex } from "../helpers/getColor";
 
-const Create = () => {
+const Create = ({ values, setValues }) => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const theme = searchParams.get("theme");
   const color = searchParams.get("color");
   const [fieldsetPosition, setFieldsetPostition] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [values, setValues] = useState(getFormData);
+  // const [values, setValues] = useState(getFormData);
 
   useEffect(() => {
     localStorage.setItem("form", JSON.stringify(values));
