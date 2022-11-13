@@ -24,10 +24,7 @@ function App() {
           element={<Create values={values} setValues={setValues} />}
         />
         <Route path="/export" element={<Export />} />
-        <Route
-          path="/import-resume"
-          element={<Edit values={values} setValues={setValues} />}
-        />
+        <Route path="/import-resume" element={<Edit setValues={setValues} />} />
         <Route path="/stored_resumes" element={<Stored />} />
       </Routes>
     </div>
