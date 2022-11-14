@@ -3,10 +3,12 @@ import { useReactToPrint } from "react-to-print";
 
 import AngoraTemplate from "../components/AngoraTemplate";
 import BlueprintTemplate from "../components/BlueprintTemplate";
+import Modal from "../components/Modal";
 
 import { colourNameToHex } from "../helpers/getColor";
 import exportAsImage from "../helpers/getHtmlToCanvas";
 import exportAsJson from "../helpers/getJsonData";
+import useModal from "../helpers/useModal";
 
 const Export = () => {
   const data = JSON.parse(localStorage.getItem("generatedResume"));
@@ -21,9 +23,12 @@ const Export = () => {
     content: () => exportRef.current,
   });
 
+  const { isShowing, toggle: closeModal } = useModal();
+
   return (
     <div>
       <h2>Export generated resume</h2>
+      {isShowing && <Modal closeModal={closeModal} />}
       <div className="preview-export" ref={exportRef}>
         {theme === "Angora" && (
           <AngoraTemplate
@@ -67,7 +72,9 @@ const Export = () => {
           </button>
         </div>
         <div className="right">
-          <button className="btn btn-cta">Build new resume</button>
+          <button className="btn btn-cta" onClick={closeModal}>
+            Build new resume
+          </button>
         </div>
       </div>
     </div>

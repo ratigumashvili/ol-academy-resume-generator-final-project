@@ -40,7 +40,12 @@ const Edit = ({ setValues }) => {
         <label htmlFor="file-upload" className="custom-file-upload">
           Upload a file
         </label>
-        <input id="file-upload" type="file" onChange={handleUpload} />
+        <input
+          id="file-upload"
+          type="file"
+          accept="application/JSON"
+          onChange={handleUpload}
+        />
         <button className="btn btn-cta" type="submit" disabled={!temp}>
           Proceed
         </button>
