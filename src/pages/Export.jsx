@@ -1,5 +1,7 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
+import uuid from "react-uuid";
+import { useNavigate } from "react-router-dom";
 
 import AngoraTemplate from "../components/AngoraTemplate";
 import BlueprintTemplate from "../components/BlueprintTemplate";
@@ -9,8 +11,9 @@ import { colourNameToHex } from "../helpers/getColor";
 import exportAsImage from "../helpers/getHtmlToCanvas";
 import exportAsJson from "../helpers/getJsonData";
 import useModal from "../helpers/useModal";
+import { formatted_date } from "../helpers/helpers";
 
-const Export = () => {
+const Export = ({ resumes, setResumes }) => {
   const data = JSON.parse(localStorage.getItem("generatedResume"));
   const { contacts, education, experience, name, proffSummary, skills } =
     data[0];
@@ -24,11 +27,30 @@ const Export = () => {
   });
 
   const { isShowing, toggle: closeModal } = useModal();
+  const navigate = useNavigate();
+
+  const addResume = () => {
+    const newResume = {
+      id: uuid(),
+      data: data[0],
+      time: formatted_date(),
+      theme: theme,
+      color: color,
+    };
+    setResumes([...resumes, newResume]);
+    setTimeout(() => {
+      navigate("/");
+    }, 1);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("all-resumes", JSON.stringify(resumes));
+  }, [resumes]);
 
   return (
     <div>
       <h2>Export generated resume</h2>
-      {isShowing && <Modal closeModal={closeModal} />}
+      {isShowing && <Modal closeModal={closeModal} addResume={addResume} />}
       <div className="preview-export" ref={exportRef}>
         {theme === "Angora" && (
           <AngoraTemplate

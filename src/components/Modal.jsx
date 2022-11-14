@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Modal = ({ closeModal }) => {
+const Modal = ({ closeModal, addResume }) => {
   const modalRef = useRef();
 
   useEffect(() => {
@@ -25,7 +25,9 @@ const Modal = ({ closeModal }) => {
         <div className="modal-content">
           <h3>Do you want to save this resume?</h3>
           <div className="controls">
-            <button className="btn btn-cta">Yes</button>
+            <button className="btn btn-cta" onClick={addResume}>
+              Yes
+            </button>
             <Link to="/" className="btn btn-danger">
               NO
             </Link>
