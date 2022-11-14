@@ -15,6 +15,7 @@ function App() {
   const [resumes, setResumes] = useState(
     JSON.parse(localStorage.getItem("all-resumes")) || []
   );
+
   return (
     <div className="App container">
       <h1 className="app-title">
@@ -23,7 +24,10 @@ function App() {
       <Routes>
         <Route path="/*" element={<NotFound />} />
         <Route index element={<Home resumes={resumes} />} />
-        <Route path="/choose-template" element={<Templates />} />
+        <Route
+          path="/choose-template"
+          element={<Templates setValues={setValues} />}
+        />
         <Route
           path="/create"
           element={<Create values={values} setValues={setValues} />}

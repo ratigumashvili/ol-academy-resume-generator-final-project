@@ -97,7 +97,7 @@ const Create = ({ values, setValues }) => {
 
   return (
     <div className="row">
-      <div className="col-sm-12 col-lg-5 mb-2">
+      <div className="col-sm-12 col-lg-5 mbc-2">
         <div className="resume-form">
           <h2 className="resume-form__heading">
             {fieldSetName[fieldsetPosition]}
@@ -118,7 +118,7 @@ const Create = ({ values, setValues }) => {
           </form>
         </div>
       </div>
-      <div className="col-sm-12 col-lg-7 mb-2">
+      <div className="col-sm-12 col-lg-7 mbc-2">
         <h2 style={{ marginBottom: "1rem" }}>Current theme: {theme}</h2>
         <div
           className="preview"
