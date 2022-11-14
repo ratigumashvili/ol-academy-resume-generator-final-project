@@ -33,24 +33,27 @@ const Home = ({ resumes }) => {
   };
 
   return (
-    <div>
-      Home
+    <div className="homepage">
       <div className="homepage-nav">
-        <Link to="/choose-template">Create a new resume</Link>
-        <Link to="/import-resume">Edit existing resume</Link>
+        <Link className="btn btn-cta" to="/choose-template">
+          Create a new resume
+        </Link>
+        <Link className="btn btn-cta" to="/import-resume">
+          Edit existing resume
+        </Link>
         {formValues && (
-          <button className="btn" onClick={handleNavigateWithParams}>
+          <button className="btn btn-cta" onClick={handleNavigateWithParams}>
             Continue
           </button>
         )}
       </div>
       {temp && (
-        <>
-          <h3>Last added resume</h3>
+        <div className="homepage__bottom">
+          <h3 className="component-heading">Last added resume</h3>
           <Link to="/stored_resumes">
             Name: {temp.data.name} Date: {temp.time}
           </Link>
-        </>
+        </div>
       )}
     </div>
   );

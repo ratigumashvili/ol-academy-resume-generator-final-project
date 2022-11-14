@@ -5,7 +5,7 @@ const ProffesionalSummaryField = ({ handleInputChange, values }) => {
         name="proffSummary"
         cols="30"
         rows="10"
-        value={values.proffSummary}
+        value={values?.proffSummary}
         onChange={handleInputChange}
       ></textarea>
     </>

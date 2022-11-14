@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { HiX } from "react-icons/hi";
 
 const Modal = ({ closeModal, addResume }) => {
   const modalRef = useRef();
@@ -19,7 +20,7 @@ const Modal = ({ closeModal, addResume }) => {
       <div className="modal-container">
         <div className="modal-header">
           <button className="btn close" onClick={closeModal}>
-            X
+            <HiX />
           </button>
         </div>
         <div className="modal-content">

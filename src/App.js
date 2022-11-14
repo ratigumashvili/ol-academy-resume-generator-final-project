@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Templates from "./pages/Templates";
@@ -8,7 +8,7 @@ import Export from "./pages/Export";
 import Edit from "./pages/Edit";
 import Stored from "./pages/Stored";
 import NotFound from "./pages/NotFound";
-import { getFormData } from "./helpers/getFormData";
+import { getFormData } from "./helpers/helpers";
 
 function App() {
   const [values, setValues] = useState(getFormData);
@@ -17,7 +17,9 @@ function App() {
   );
   return (
     <div className="App container">
-      <h1>Resume generator</h1>
+      <h1 className="app-title">
+        <Link to="/">Resume generator</Link>
+      </h1>
       <Routes>
         <Route path="/*" element={<NotFound />} />
         <Route index element={<Home resumes={resumes} />} />

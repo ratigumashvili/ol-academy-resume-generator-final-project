@@ -5,7 +5,7 @@ const ExperienceField = ({ handleInputChange, values }) => {
         name="experience"
         cols="30"
         rows="10"
-        value={values.experience}
+        value={values?.experience}
         onChange={handleInputChange}
       ></textarea>
     </>

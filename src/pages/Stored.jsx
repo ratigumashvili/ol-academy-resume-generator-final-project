@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { HiX } from "react-icons/hi";
 
 import ContextMenu from "../components/ContextMenu";
 import useContextMenu from "../hooks/useContextMenu";
@@ -21,7 +22,7 @@ const Stored = ({ resumes, setResumes }) => {
 
   return (
     <>
-      <h2>Stored</h2>
+      <h2 className="component-heading">Stored</h2>
       {resumes && (
         <ul className="history-list" ref={historyListRef}>
           {resumes
@@ -46,7 +47,7 @@ const Stored = ({ resumes, setResumes }) => {
                       className="btn btn-danger"
                       style={{ marginLeft: "15px" }}
                     >
-                      x
+                      <HiX />
                     </button>
                   </div>
                 </li>

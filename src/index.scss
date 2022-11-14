@@ -15,8 +15,16 @@ body {
   font-size: 1.1rem;
 }
 
+.app-title {
+  padding: 2rem 0;
+}
+
 a {
   color: inherit;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
 }
 
 .btn {
@@ -54,10 +62,26 @@ a {
   margin-bottom: 1.5rem;
 }
 
+.homepage {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 105px);
+}
+
 .homepage-nav {
+  flex: 1;
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+.homepage__bottom {
+  margin-top: auto;
+  padding: 2rem 0;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .color-picker-holder {

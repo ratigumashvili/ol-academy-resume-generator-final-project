@@ -54,7 +54,7 @@ const Export = ({ resumes, setResumes, setValues }) => {
 
   return (
     <div>
-      <h2>Export generated resume</h2>
+      <h2 className="component-heading">Export generated resume</h2>
       {isShowing && <Modal closeModal={closeModal} addResume={addResume} />}
       <div className="preview-export" ref={exportRef}>
         {theme === "Angora" && (

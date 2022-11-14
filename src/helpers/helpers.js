@@ -10,7 +10,9 @@ export const getCurrent = (curr, total) => {
 };
 
 export const getEmptyValues = (obj) => {
-  return Object.values(obj).every((item) => item === "");
+  if (obj) {
+    return Object.values(obj).every((item) => item === "");
+  } else return;
 };
 
 export const formatted_date = () => {

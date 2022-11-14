@@ -46,8 +46,8 @@ const Templates = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-sm-12 col-md-6 color-picker-holder">
-          <h2>{theme.name}</h2>
+        <div className="col-sm-12 col-md-6 color-picker-holder mb-2">
+          <h2 className="component-heading">{theme.name}</h2>
           <p>{theme.desc}</p>
           <ColorPicker
             pallete={pallete}
@@ -63,7 +63,7 @@ const Templates = () => {
             handleThemeChange={handleThemeChange}
           />
         </div>
-        <div className="col-sm-12">
+        <div className="col-sm-12 mb-2">
           <button className="btn btn-cta" onClick={handleNavigateWithParams}>
             Select this template
           </button>

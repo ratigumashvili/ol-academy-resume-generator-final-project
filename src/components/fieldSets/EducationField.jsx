@@ -5,7 +5,7 @@ const EducationField = ({ handleInputChange, values }) => {
         name="education"
         cols="30"
         rows="10"
-        value={values.education}
+        value={values?.education}
         onChange={handleInputChange}
       ></textarea>
     </>

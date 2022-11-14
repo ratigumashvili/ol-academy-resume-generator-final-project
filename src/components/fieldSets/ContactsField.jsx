@@ -5,7 +5,7 @@ const ContactsField = ({ handleInputChange, values }) => {
         name="contacts"
         cols="30"
         rows="10"
-        value={values.contacts}
+        value={values?.contacts}
         onChange={handleInputChange}
       ></textarea>
     </>

@@ -97,7 +97,7 @@ const Create = ({ values, setValues }) => {
 
   return (
     <div className="row">
-      <div className="col-sm-12 col-lg-5">
+      <div className="col-sm-12 col-lg-5 mb-2">
         <div className="resume-form">
           <h2 className="resume-form__heading">
             {fieldSetName[fieldsetPosition]}
@@ -118,7 +118,7 @@ const Create = ({ values, setValues }) => {
           </form>
         </div>
       </div>
-      <div className="col-sm-12 col-lg-7">
+      <div className="col-sm-12 col-lg-7 mb-2">
         <h2 style={{ marginBottom: "1rem" }}>Current theme: {theme}</h2>
         <div
           className="preview"
@@ -129,23 +129,23 @@ const Create = ({ values, setValues }) => {
           {theme === "Angora" && (
             <AngoraTemplate
               color={colourNameToHex(color)}
-              name={values.name}
-              contacts={values.contacts}
-              proffSumarry={values.proffSummary}
-              skills={values.skills}
-              experience={values.experience}
-              education={values.education}
+              name={values?.name}
+              contacts={values?.contacts}
+              proffSumarry={values?.proffSummary}
+              skills={values?.skills}
+              experience={values?.experience}
+              education={values?.education}
             />
           )}
           {theme === "Blueprint" && (
             <BlueprintTemplate
               color={colourNameToHex(color)}
-              name={values.name}
-              contacts={values.contacts}
-              proffSumarry={values.proffSummary}
-              skills={values.skills}
-              experience={values.experience}
-              education={values.education}
+              name={values?.name}
+              contacts={values?.contacts}
+              proffSumarry={values?.proffSummary}
+              skills={values?.skills}
+              experience={values?.experience}
+              education={values?.education}
             />
           )}
         </div>

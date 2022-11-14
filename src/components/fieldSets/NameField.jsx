@@ -4,7 +4,7 @@ const NameField = ({ handleInputChange, values }) => {
       <input
         type="text"
         name="name"
-        value={values.name}
+        value={values?.name}
         onChange={handleInputChange}
       />
     </>

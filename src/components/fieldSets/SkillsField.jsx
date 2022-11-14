@@ -5,7 +5,7 @@ const SkillsField = ({ handleInputChange, values }) => {
         name="skills"
         cols="30"
         rows="10"
-        value={values.skills}
+        value={values?.skills}
         onChange={handleInputChange}
       ></textarea>
     </>
