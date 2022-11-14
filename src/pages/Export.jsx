@@ -7,13 +7,16 @@ import AngoraTemplate from "../components/AngoraTemplate";
 import BlueprintTemplate from "../components/BlueprintTemplate";
 import Modal from "../components/Modal";
 
-import { colourNameToHex } from "../helpers/getColor";
 import exportAsImage from "../helpers/getHtmlToCanvas";
 import exportAsJson from "../helpers/getJsonData";
-import useModal from "../helpers/useModal";
-import { formatted_date } from "../helpers/helpers";
+import useModal from "../hooks/useModal";
+import {
+  formatted_date,
+  getFormData,
+  colourNameToHex,
+} from "../helpers/helpers";
 
-const Export = ({ resumes, setResumes }) => {
+const Export = ({ resumes, setResumes, setValues }) => {
   const data = JSON.parse(localStorage.getItem("generatedResume"));
   const { contacts, education, experience, name, proffSummary, skills } =
     data[0];
@@ -38,6 +41,8 @@ const Export = ({ resumes, setResumes }) => {
       color: color,
     };
     setResumes([...resumes, newResume]);
+    setValues(getFormData);
+    localStorage.removeItem("form");
     setTimeout(() => {
       navigate("/");
     }, 1);

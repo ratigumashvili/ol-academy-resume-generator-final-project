@@ -1,4 +1,4 @@
-import { colourNameToHex } from "../helpers/getColor";
+import { colourNameToHex } from "../helpers/helpers";
 
 const ColorPicker = ({
   pallete,

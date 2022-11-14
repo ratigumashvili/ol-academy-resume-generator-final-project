@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, createSearchParams, useNavigate } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ resumes }) => {
   const [local, setLocal] = useState({});
+  const [temp, setTemp] = useState(null);
   const template = localStorage.getItem("template");
   const formValues = localStorage.getItem("form");
 
@@ -12,6 +13,12 @@ const Home = () => {
     }
     setLocal(JSON.parse(localStorage.getItem("template")));
   }, [formValues, template]);
+
+  useEffect(() => {
+    if (resumes.length !== 0) {
+      setTemp(resumes.slice(-1)[0]);
+    }
+  }, [resumes]);
 
   const navigate = useNavigate();
 
@@ -37,6 +44,14 @@ const Home = () => {
           </button>
         )}
       </div>
+      {temp && (
+        <>
+          <h3>Last added resume</h3>
+          <Link to="/stored_resumes">
+            Name: {temp.data.name} Date: {temp.time}
+          </Link>
+        </>
+      )}
     </div>
   );
 };

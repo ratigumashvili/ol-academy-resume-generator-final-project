@@ -3,7 +3,7 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import AngoraTemplate from "./AngoraTemplate";
 import BlueprintTemplate from "./BlueprintTemplate";
 
-import { colourNameToHex } from "../helpers/getColor";
+import { colourNameToHex } from "../helpers/helpers";
 
 const TemplateBox = ({ pickedColor, handleThemeChange, theme }) => {
   return (

@@ -20,7 +20,7 @@ function App() {
       <h1>Resume generator</h1>
       <Routes>
         <Route path="/*" element={<NotFound />} />
-        <Route index element={<Home />} />
+        <Route index element={<Home resumes={resumes} />} />
         <Route path="/choose-template" element={<Templates />} />
         <Route
           path="/create"
@@ -28,10 +28,19 @@ function App() {
         />
         <Route
           path="/export"
-          element={<Export resumes={resumes} setResumes={setResumes} />}
+          element={
+            <Export
+              resumes={resumes}
+              setResumes={setResumes}
+              setValues={setValues}
+            />
+          }
         />
         <Route path="/import-resume" element={<Edit setValues={setValues} />} />
-        <Route path="/stored_resumes" element={<Stored resumes={resumes} />} />
+        <Route
+          path="/stored_resumes"
+          element={<Stored resumes={resumes} setResumes={setResumes} />}
+        />
       </Routes>
     </div>
   );
