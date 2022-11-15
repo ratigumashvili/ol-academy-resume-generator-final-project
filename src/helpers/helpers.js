@@ -1,5 +1,4 @@
 import moment from "moment";
-import { formValues } from "../tempData";
 
 export const getProgressBar = (curr, total) => {
   return (curr / total) * 100;
@@ -42,12 +41,4 @@ export const colourNameToHex = (colour) => {
     return colours[colour.toLowerCase().replaceAll(/\s/g, "")];
 
   return false;
-};
-
-export const getFormData = () => {
-  const storedValues = localStorage.getItem("form");
-  if (!storedValues) {
-    return formValues;
-  }
-  return JSON.parse(storedValues);
 };
