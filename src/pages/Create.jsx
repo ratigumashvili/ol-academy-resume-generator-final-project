@@ -132,7 +132,7 @@ const Create = ({ values, setValues, fetchedData }) => {
       <div className="col-sm-12 col-lg-7 mbc-2">
         <h2 className="component-heading__create">
           Current theme: {theme}
-          <button className="btn" onClick={closeModal}>
+          <button className="btn" onClick={closeModal} title="Help">
             <HiQuestionMarkCircle />
           </button>
         </h2>
