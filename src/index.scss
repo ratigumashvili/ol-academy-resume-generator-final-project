@@ -140,6 +140,12 @@ a {
   grid-template-columns: repeat(6, 35px);
   gap: 20px;
 
+  @media (max-width: 400px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .color-picker-item {
     width: 30px;
     height: 30px;
@@ -278,6 +284,7 @@ input[type="radio"]:checked::before {
 .blueprint {
   .content {
     display: flex;
+    gap: 15px;
     .left {
       flex: 1;
     }
