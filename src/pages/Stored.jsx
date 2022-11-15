@@ -38,18 +38,14 @@ const Stored = ({ resumes, setResumes }) => {
             .map((item) => {
               const { id, time } = item;
               return (
-                <li key={id}>
-                  <div>Name: {item.data.name}</div>
-                  <div className="right">
-                    <div id={id}>Time: {time}</div>
-                    <button
-                      onClick={() => handleRemoveItem(id)}
-                      className="btn btn-danger"
-                      style={{ marginLeft: "15px" }}
-                    >
-                      <HiX />
-                    </button>
-                  </div>
+                <li key={id} id={id}>
+                  <b>Name</b>: {item.data.name} &nbsp; <b>Time</b>: {time}
+                  <button
+                    onClick={() => handleRemoveItem(id)}
+                    className="btn btn-danger"
+                  >
+                    <HiX />
+                  </button>
                 </li>
               );
             })}

@@ -4,8 +4,11 @@ import AngoraTemplate from "./AngoraTemplate";
 import BlueprintTemplate from "./BlueprintTemplate";
 
 import { colourNameToHex } from "../helpers/helpers";
+import { dummyData } from "../tempData";
 
 const TemplateBox = ({ pickedColor, handleThemeChange, theme }) => {
+  const { name, contacts, proffSumarry, skills, experience, education } =
+    dummyData;
   return (
     <div className="theme-wrapper">
       <button className="theme-change next" onClick={handleThemeChange}>
@@ -14,23 +17,23 @@ const TemplateBox = ({ pickedColor, handleThemeChange, theme }) => {
       {theme.name === "Angora" && (
         <AngoraTemplate
           color={colourNameToHex(pickedColor)}
-          name="Jhon Doe"
-          contacts="Puy your contact information here"
-          proffSumarry="Text describing your professional summary"
-          skills="Text describing your skills"
-          experience="Put your experience here"
-          education="Put your educational achievements here"
+          name={name}
+          contacts={contacts}
+          proffSumarry={proffSumarry}
+          skills={skills}
+          experience={experience}
+          education={education}
         />
       )}
       {theme.name === "Blueprint" && (
         <BlueprintTemplate
           color={colourNameToHex(pickedColor)}
-          name="Jhon Doe"
-          contacts="Puy your contact information here"
-          proffSumarry="Text describing your professional summary"
-          skills="Text describing your skills"
-          experience="Put your experience here"
-          education="Put your educational achievements here"
+          name={name}
+          contacts={contacts}
+          proffSumarry={proffSumarry}
+          skills={skills}
+          experience={experience}
+          education={education}
         />
       )}
       <button className="theme-change prev" onClick={handleThemeChange}>

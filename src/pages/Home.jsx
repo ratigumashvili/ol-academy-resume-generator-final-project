@@ -51,7 +51,7 @@ const Home = ({ resumes }) => {
         <div className="homepage__bottom">
           <h3 className="component-heading">Last added resume</h3>
           <Link to="/stored_resumes">
-            Name: {temp.data.name} Date: {temp.time}
+            <b>Name</b>: {temp.data.name} <b>Date</b>: {temp.time}
           </Link>
         </div>
       )}

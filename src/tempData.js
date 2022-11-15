@@ -43,3 +43,12 @@ export const formValues = {
   experience: "",
   education: "",
 };
+
+export const dummyData = {
+  name: "Jhon Doe",
+  contacts: "Puy your contact information here",
+  proffSummary: "Text describing your professional summary",
+  skills: "Text describing your skills",
+  experience: "Put your experience here",
+  education: "Put your educational achievements here",
+};
