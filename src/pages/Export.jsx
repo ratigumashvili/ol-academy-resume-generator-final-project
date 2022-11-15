@@ -10,13 +10,9 @@ import Modal from "../components/Modal";
 import exportAsImage from "../helpers/getHtmlToCanvas";
 import exportAsJson from "../helpers/getJsonData";
 import useModal from "../hooks/useModal";
-import {
-  formatted_date,
-  getFormData,
-  colourNameToHex,
-} from "../helpers/helpers";
+import { formatted_date, colourNameToHex } from "../helpers/helpers";
 
-const Export = ({ resumes, setResumes, setValues }) => {
+const Export = ({ resumes, setResumes, setValues, getFormData }) => {
   const data = JSON.parse(localStorage.getItem("generatedResume"));
   const { contacts, education, experience, name, proffSummary, skills } =
     data[0];

@@ -5,7 +5,6 @@ import AngoraTemplate from "./AngoraTemplate";
 import BlueprintTemplate from "./BlueprintTemplate";
 
 import { colourNameToHex } from "../helpers/helpers";
-// import { dummyData } from "../tempData";
 
 const TemplateBox = ({
   pickedColor,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -10,14 +10,35 @@ import Stored from "./pages/Stored";
 import NotFound from "./pages/NotFound";
 import LoadingSpinner from "./components/LoadingSpinner";
 import useFetch from "./hooks/useFetch";
-import { getFormData } from "./helpers/helpers";
 
 function App() {
+  const getFormData = () => {
+    const storedValues = localStorage.getItem("form");
+    if (!storedValues) {
+      return formValues;
+    }
+    return JSON.parse(storedValues);
+  };
+
   const { fetchedData, loading } = useFetch();
+  const [formValues, setFormValues] = useState({
+    name: "",
+    contacts: "",
+    proffSummary: "",
+    skills: "",
+    experience: "",
+    education: "",
+  });
   const [values, setValues] = useState(getFormData);
   const [resumes, setResumes] = useState(
     JSON.parse(localStorage.getItem("all-resumes")) || []
   );
+
+  useEffect(() => {
+    if (Object.keys(fetchedData).length !== 0) {
+      setFormValues(fetchedData.formValues);
+    }
+  }, [fetchedData]);
 
   if (loading) {
     return <LoadingSpinner />;
@@ -54,6 +75,7 @@ function App() {
               resumes={resumes}
               setResumes={setResumes}
               setValues={setValues}
+              getFormData={getFormData}
             />
           }
         />

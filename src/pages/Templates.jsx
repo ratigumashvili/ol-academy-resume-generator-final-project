@@ -2,13 +2,10 @@ import { useState, useEffect } from "react";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import ColorPicker from "../components/ColorPicker";
 import TemplateBox from "../components/TemplateBox";
-// import { pallete, themes } from "../tempData";
-// import { formValues } from "../tempData";
 
 const Templates = ({ setValues, fetchedData }) => {
   const [currentPallete, setCurrentPallete] = useState(0);
   const [pickedColor, setPickedColor] = useState("classicblack");
-  // const [theme, setTheme] = useState(themes[0]);
   const [allThemes, setAllthemes] = useState([]);
   const [currentTheme, setCurrentTheme] = useState(0);
   const [theme, setTheme] = useState(null);

@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 
-// import { fieldSetName } from "../tempData";
-
 import NameField from "../components/fieldSets/NameField";
 import ContactsField from "../components/fieldSets/ContactsField";
 import ProffesionalSummaryField from "../components/fieldSets/ProffesionalSummaryField";
