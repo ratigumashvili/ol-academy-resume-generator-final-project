@@ -15,6 +15,12 @@ body {
   font-size: 1.1rem;
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  color: palevioletred;
+}
+
 .app-title {
   padding: 2rem 0;
 }
@@ -60,6 +66,19 @@ a {
 
 .component-heading {
   margin-bottom: 1.5rem;
+}
+
+.component-heading__create {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
 }
 
 .homepage {
@@ -473,4 +492,12 @@ input[type="file"] {
   gap: 10px;
   border: solid 1px #333;
   border-radius: 5px;
+}
+
+.markdown-help {
+  padding: 15px;
+  p {
+    margin-bottom: 1rem;
+    line-height: 28px;
+  }
 }

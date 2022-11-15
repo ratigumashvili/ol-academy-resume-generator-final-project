@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { HiQuestionMarkCircle } from "react-icons/hi";
 
 import NameField from "../components/fieldSets/NameField";
 import ContactsField from "../components/fieldSets/ContactsField";
@@ -11,6 +12,8 @@ import ProgressBar from "../components/ProgressBar";
 import ResumeFormControlls from "../components/ResumeFormControlls";
 import AngoraTemplate from "../components/AngoraTemplate";
 import BlueprintTemplate from "../components/BlueprintTemplate";
+import ModalHelp from "../components/ModalHelp";
+import useModal from "../hooks/useModal";
 import {
   getProgressBar,
   getCurrent,
@@ -26,6 +29,8 @@ const Create = ({ values, setValues, fetchedData }) => {
   const [fieldsetPosition, setFieldsetPostition] = useState(0);
   const [progress, setProgress] = useState(0);
   const [fieldSetName, setFieldsetName] = useState([]);
+
+  const { isShowing, toggle: closeModal } = useModal();
 
   useEffect(() => {
     if (Object.keys(fetchedData).length !== 0) {
@@ -124,7 +129,13 @@ const Create = ({ values, setValues, fetchedData }) => {
         </div>
       </div>
       <div className="col-sm-12 col-lg-7 mbc-2">
-        <h2 style={{ marginBottom: "1rem" }}>Current theme: {theme}</h2>
+        <h2 className="component-heading__create">
+          Current theme: {theme}
+          <button className="btn" onClick={closeModal}>
+            <HiQuestionMarkCircle />
+          </button>
+        </h2>
+        {isShowing && <ModalHelp closeModal={closeModal} />}
         <div
           className="preview"
           style={
