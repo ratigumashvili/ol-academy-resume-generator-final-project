@@ -8,13 +8,22 @@ import Export from "./pages/Export";
 import Edit from "./pages/Edit";
 import Stored from "./pages/Stored";
 import NotFound from "./pages/NotFound";
+import LoadingSpinner from "./components/LoadingSpinner";
+import useFetch from "./hooks/useFetch";
 import { getFormData } from "./helpers/helpers";
 
 function App() {
+  const { fetchedData, loading } = useFetch();
   const [values, setValues] = useState(getFormData);
   const [resumes, setResumes] = useState(
     JSON.parse(localStorage.getItem("all-resumes")) || []
   );
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  console.log(fetchedData);
 
   return (
     <div className="App container">
