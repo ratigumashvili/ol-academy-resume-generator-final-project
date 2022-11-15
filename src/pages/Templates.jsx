@@ -16,7 +16,7 @@ const Templates = ({ setValues, fetchedData }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (Object.keys(fetchedData).length !== 0) {
+    if (fetchedData && Object.keys(fetchedData).length !== 0) {
       setTheme(fetchedData.themes[0]);
       setAllthemes(fetchedData.themes);
       setPallete(fetchedData.pallete);

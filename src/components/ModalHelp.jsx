@@ -1,9 +1,9 @@
 import { HiX } from "react-icons/hi";
 import { text } from "../markdownSyntaxtHelp";
 
-const ModalHelp = ({ closeModal }) => {
+const ModalHelp = ({ closeModal, modalRef }) => {
   return (
-    <div className="modal-wrapper">
+    <div className="modal-wrapper" ref={modalRef}>
       <div className="modal-container">
         <div className="modal-header">
           <button className="btn close" onClick={closeModal}>

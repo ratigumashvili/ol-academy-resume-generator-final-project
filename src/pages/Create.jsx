@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { HiQuestionMarkCircle } from "react-icons/hi";
 
@@ -30,10 +30,11 @@ const Create = ({ values, setValues, fetchedData }) => {
   const [progress, setProgress] = useState(0);
   const [fieldSetName, setFieldsetName] = useState([]);
 
-  const { isShowing, toggle: closeModal } = useModal();
+  const modalRef = useRef();
+  const { isShowing, toggle: closeModal } = useModal(modalRef);
 
   useEffect(() => {
-    if (Object.keys(fetchedData).length !== 0) {
+    if (fetchedData && Object.keys(fetchedData).length !== 0) {
       setFieldsetName(fetchedData.fieldSetName);
     }
   }, [fetchedData]);
@@ -135,7 +136,7 @@ const Create = ({ values, setValues, fetchedData }) => {
             <HiQuestionMarkCircle />
           </button>
         </h2>
-        {isShowing && <ModalHelp closeModal={closeModal} />}
+        {isShowing && <ModalHelp closeModal={closeModal} modalRef={modalRef} />}
         <div
           className="preview"
           style={

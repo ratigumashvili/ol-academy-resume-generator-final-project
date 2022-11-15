@@ -35,7 +35,7 @@ function App() {
   );
 
   useEffect(() => {
-    if (Object.keys(fetchedData).length !== 0) {
+    if (fetchedData && Object.keys(fetchedData).length !== 0) {
       setFormValues(fetchedData.formValues);
     }
   }, [fetchedData]);

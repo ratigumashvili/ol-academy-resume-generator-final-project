@@ -25,7 +25,8 @@ const Export = ({ resumes, setResumes, setValues, getFormData }) => {
     content: () => exportRef.current,
   });
 
-  const { isShowing, toggle: closeModal } = useModal();
+  const modalRef = useRef();
+  const { isShowing, toggle: closeModal } = useModal(modalRef);
   const navigate = useNavigate();
 
   const addResume = () => {
@@ -51,7 +52,13 @@ const Export = ({ resumes, setResumes, setValues, getFormData }) => {
   return (
     <div>
       <h2 className="component-heading">Export generated resume</h2>
-      {isShowing && <Modal closeModal={closeModal} addResume={addResume} />}
+      {isShowing && (
+        <Modal
+          closeModal={closeModal}
+          modalRef={modalRef}
+          addResume={addResume}
+        />
+      )}
       <div className="preview-export" ref={exportRef}>
         {theme === "Angora" && (
           <AngoraTemplate

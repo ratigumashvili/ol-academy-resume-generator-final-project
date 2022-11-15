@@ -1,20 +1,7 @@
-import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HiX } from "react-icons/hi";
 
-const Modal = ({ closeModal, addResume }) => {
-  const modalRef = useRef();
-
-  useEffect(() => {
-    const handleOutsideClick = (e) => {
-      if (e.target === modalRef.current) {
-        closeModal();
-      }
-    };
-
-    document.addEventListener("click", handleOutsideClick);
-    return () => document.removeEventListener("click", handleOutsideClick);
-  }, [closeModal]);
+const Modal = ({ closeModal, addResume, modalRef }) => {
   return (
     <div className="modal-wrapper" ref={modalRef}>
       <div className="modal-container">
