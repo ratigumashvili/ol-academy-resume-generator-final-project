@@ -2,20 +2,34 @@ import { useState, useEffect } from "react";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import ColorPicker from "../components/ColorPicker";
 import TemplateBox from "../components/TemplateBox";
-import { pallete, themes } from "../tempData";
-import { formValues } from "../tempData";
+// import { pallete, themes } from "../tempData";
+// import { formValues } from "../tempData";
 
-const Templates = ({ setValues }) => {
+const Templates = ({ setValues, fetchedData }) => {
   const [currentPallete, setCurrentPallete] = useState(0);
   const [pickedColor, setPickedColor] = useState("classicblack");
+  // const [theme, setTheme] = useState(themes[0]);
+  const [allThemes, setAllthemes] = useState([]);
   const [currentTheme, setCurrentTheme] = useState(0);
-  const [theme, setTheme] = useState(themes[0]);
+  const [theme, setTheme] = useState(null);
+  const [pallete, setPallete] = useState([]);
+
+  const [formValues, setFormValues] = useState({});
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    setTheme(themes[currentTheme]);
-  }, [currentTheme]);
+    if (Object.keys(fetchedData).length !== 0) {
+      setTheme(fetchedData.themes[0]);
+      setAllthemes(fetchedData.themes);
+      setPallete(fetchedData.pallete);
+      setFormValues(fetchedData.formValues);
+    }
+  }, [fetchedData]);
+
+  useEffect(() => {
+    setTheme(allThemes?.[currentTheme]);
+  }, [currentTheme, allThemes]);
 
   const handlePickColor = (item) => {
     setCurrentPallete(item.id - 1);
@@ -23,12 +37,12 @@ const Templates = ({ setValues }) => {
   };
 
   const handleThemeChange = () => {
-    if (currentTheme === themes.length - 1) {
+    if (currentTheme === allThemes?.length - 1) {
       setCurrentTheme(0);
     } else {
       setCurrentTheme(currentTheme + 1);
     }
-    setTheme(themes[currentTheme]);
+    setTheme(allThemes?.[currentTheme]);
   };
 
   const handleNavigateWithParams = () => {
@@ -48,8 +62,8 @@ const Templates = ({ setValues }) => {
     <div className="container">
       <div className="row">
         <div className="col-sm-12 col-md-6 color-picker-holder mbc-2">
-          <h2 className="component-heading">{theme.name}</h2>
-          <p>{theme.desc}</p>
+          <h2 className="component-heading">{theme?.name}</h2>
+          <p>{theme?.desc}</p>
           <ColorPicker
             pallete={pallete}
             currentPallete={currentPallete}
@@ -59,6 +73,7 @@ const Templates = ({ setValues }) => {
         </div>
         <div className="col-sm-12 col-md-6">
           <TemplateBox
+            fetchedData={fetchedData}
             pickedColor={pickedColor}
             theme={theme}
             handleThemeChange={handleThemeChange}

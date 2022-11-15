@@ -23,8 +23,6 @@ function App() {
     return <LoadingSpinner />;
   }
 
-  console.log(fetchedData);
-
   return (
     <div className="App container">
       <h1 className="app-title">
@@ -35,11 +33,19 @@ function App() {
         <Route index element={<Home resumes={resumes} />} />
         <Route
           path="/choose-template"
-          element={<Templates setValues={setValues} />}
+          element={
+            <Templates setValues={setValues} fetchedData={fetchedData} />
+          }
         />
         <Route
           path="/create"
-          element={<Create values={values} setValues={setValues} />}
+          element={
+            <Create
+              values={values}
+              setValues={setValues}
+              fetchedData={fetchedData}
+            />
+          }
         />
         <Route
           path="/export"

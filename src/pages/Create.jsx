@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 
-import { fieldSetName } from "../tempData";
+// import { fieldSetName } from "../tempData";
 
 import NameField from "../components/fieldSets/NameField";
 import ContactsField from "../components/fieldSets/ContactsField";
@@ -20,13 +20,20 @@ import {
   colourNameToHex,
 } from "../helpers/helpers";
 
-const Create = ({ values, setValues }) => {
+const Create = ({ values, setValues, fetchedData }) => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const theme = searchParams.get("theme");
   const color = searchParams.get("color");
   const [fieldsetPosition, setFieldsetPostition] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [fieldSetName, setFieldsetName] = useState([]);
+
+  useEffect(() => {
+    if (Object.keys(fetchedData).length !== 0) {
+      setFieldsetName(fetchedData.fieldSetName);
+    }
+  }, [fetchedData]);
 
   useEffect(() => {
     localStorage.setItem("form", JSON.stringify(values));
@@ -43,7 +50,7 @@ const Create = ({ values, setValues }) => {
   useEffect(() => {
     const prog = getProgressBar(fieldsetPosition + 1, fieldSetName.length);
     setProgress(prog);
-  }, [fieldsetPosition]);
+  }, [fieldsetPosition, fieldSetName.length]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

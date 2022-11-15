@@ -1,12 +1,25 @@
+import { useEffect, useState } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 import AngoraTemplate from "./AngoraTemplate";
 import BlueprintTemplate from "./BlueprintTemplate";
 
 import { colourNameToHex } from "../helpers/helpers";
-import { dummyData } from "../tempData";
+// import { dummyData } from "../tempData";
 
-const TemplateBox = ({ pickedColor, handleThemeChange, theme }) => {
+const TemplateBox = ({
+  pickedColor,
+  handleThemeChange,
+  theme,
+  fetchedData,
+}) => {
+  const [dummyData, setDummyData] = useState({});
+
+  useEffect(() => {
+    if (Object.keys(fetchedData).length !== 0) {
+      setDummyData(fetchedData.dummyData);
+    }
+  }, [fetchedData]);
   const { name, contacts, proffSumarry, skills, experience, education } =
     dummyData;
   return (
@@ -14,7 +27,7 @@ const TemplateBox = ({ pickedColor, handleThemeChange, theme }) => {
       <button className="theme-change next" onClick={handleThemeChange}>
         <HiChevronRight size={30} />
       </button>
-      {theme.name === "Angora" && (
+      {theme?.name === "Angora" && (
         <AngoraTemplate
           color={colourNameToHex(pickedColor)}
           name={name}
@@ -25,7 +38,7 @@ const TemplateBox = ({ pickedColor, handleThemeChange, theme }) => {
           education={education}
         />
       )}
-      {theme.name === "Blueprint" && (
+      {theme?.name === "Blueprint" && (
         <BlueprintTemplate
           color={colourNameToHex(pickedColor)}
           name={name}
