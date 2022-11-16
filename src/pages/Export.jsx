@@ -89,10 +89,10 @@ const Export = ({ resumes, setResumes, setValues, getFormData }) => {
             className="btn"
             onClick={() => exportAsImage(exportRef.current, "cv-image")}
           >
-            Export img
+            Export Image
           </button>
           <button className="btn" onClick={handlePrint}>
-            Export Pdf
+            Export PDF
           </button>
           <button
             className="btn"
