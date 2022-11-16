@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import AngoraTemplate from "../components/AngoraTemplate";
 import BlueprintTemplate from "../components/BlueprintTemplate";
-import Modal from "../components/Modal";
+import ModalNotifiaction from "../components/ModalNotifiaction";
 
 import exportAsImage from "../helpers/getHtmlToCanvas";
 import exportAsJson from "../helpers/getJsonData";
@@ -53,7 +53,7 @@ const Export = ({ resumes, setResumes, setValues, getFormData }) => {
     <div>
       <h2 className="component-heading">Export generated resume</h2>
       {isShowing && (
-        <Modal
+        <ModalNotifiaction
           closeModal={closeModal}
           modalRef={modalRef}
           addResume={addResume}
