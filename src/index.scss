@@ -244,6 +244,12 @@ input[type="radio"]:checked::before {
   ol {
     margin-bottom: 15px;
   }
+
+  hr {
+    margin: 0 0 15px 0;
+    border: unset;
+    border-top: solid 1px #eee;
+  }
 }
 
 .theme-wrapper {

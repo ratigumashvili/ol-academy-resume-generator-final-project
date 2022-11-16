@@ -22,6 +22,7 @@ const Export = ({ resumes, setResumes, setValues, getFormData }) => {
   const exportRef = useRef();
 
   const handlePrint = useReactToPrint({
+    documentTitle: "cv-pdf",
     content: () => exportRef.current,
   });
 
