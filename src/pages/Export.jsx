@@ -30,7 +30,7 @@ const Export = ({ resumes, setResumes, setValues, getFormData }) => {
   const { isShowing, toggle: closeModal } = useModal(modalRef);
   const navigate = useNavigate();
 
-  const addResume = () => {
+  const addResume = async () => {
     const newResume = {
       id: uuid(),
       data: data[0],
@@ -41,9 +41,11 @@ const Export = ({ resumes, setResumes, setValues, getFormData }) => {
     setResumes([...resumes, newResume]);
     setValues(getFormData);
     localStorage.removeItem("form");
-    setTimeout(() => {
-      navigate("/");
-    }, 1);
+  };
+
+  const navigateToHome = async () => {
+    await addResume();
+    navigate("/");
   };
 
   useEffect(() => {
@@ -57,7 +59,7 @@ const Export = ({ resumes, setResumes, setValues, getFormData }) => {
         <ModalNotifiaction
           closeModal={closeModal}
           modalRef={modalRef}
-          addResume={addResume}
+          navigateToHome={navigateToHome}
         />
       )}
       <div className="preview-export" ref={exportRef}>
