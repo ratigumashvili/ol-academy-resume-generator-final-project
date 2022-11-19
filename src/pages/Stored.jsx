@@ -7,7 +7,7 @@ import useContextMenu from "../hooks/useContextMenu";
 
 const Stored = ({ resumes, setResumes }) => {
   const handleRemoveItem = (itemToDelete) => {
-    const updatedArray = resumes.filter((item) => item.id !== itemToDelete);
+    const updatedArray = resumes.filter(({ id }) => id !== itemToDelete);
     setResumes(updatedArray);
     localStorage.setItem("all-resumes", JSON.stringify(updatedArray));
   };
