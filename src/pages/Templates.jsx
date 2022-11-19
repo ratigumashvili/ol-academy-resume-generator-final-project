@@ -28,9 +28,9 @@ const Templates = ({ setValues, fetchedData }) => {
     setTheme(allThemes?.[currentTheme]);
   }, [currentTheme, allThemes]);
 
-  const handlePickColor = (item) => {
-    setCurrentPallete(item.id - 1);
-    setPickedColor(item.name.toLowerCase().replaceAll(/\s/g, ""));
+  const handlePickColor = ({ id, name }) => {
+    setCurrentPallete(id - 1);
+    setPickedColor(name.toLowerCase().replaceAll(/\s/g, ""));
   };
 
   const handleThemeChange = () => {
