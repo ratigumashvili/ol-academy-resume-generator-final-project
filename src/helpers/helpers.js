@@ -42,3 +42,13 @@ export const colourNameToHex = (colour) => {
 
   return false;
 };
+
+export const resumeSort = (a, b) => {
+  return b.data.name !== a.data.name
+    ? a.data.name > b.data.name
+      ? 1
+      : -1
+    : b.time > a.time
+    ? 1
+    : -1;
+};
