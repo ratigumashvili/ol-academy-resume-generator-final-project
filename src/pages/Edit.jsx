@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { createSearchParams, useNavigate } from "react-router-dom";
 
 const Edit = ({ setValues }) => {
-  const [temp, setTemp] = useState("");
+  const [uploadedResume, setUploadedResume] = useState("");
   const navigate = useNavigate();
 
   const handleUpload = async (e) => {
@@ -10,19 +10,19 @@ const Edit = ({ setValues }) => {
 
     reader.onload = async (e) => {
       const text = e.target.result;
-      setTemp(JSON.parse(text));
+      setUploadedResume(JSON.parse(text));
     };
 
     reader.readAsText(e.target.files[0]);
   };
 
   useEffect(() => {
-    setValues(temp[0]);
-  }, [temp, setValues]);
+    setValues(uploadedResume[0]);
+  }, [uploadedResume, setValues]);
 
   const handleNavigateWithParams = (e) => {
     e.preventDefault();
-    const [, theme, color] = temp;
+    const [, theme, color] = uploadedResume;
     navigate({
       pathname: "/create",
       search: createSearchParams({
@@ -46,7 +46,11 @@ const Edit = ({ setValues }) => {
           accept="application/JSON"
           onChange={handleUpload}
         />
-        <button className="btn btn-cta" type="submit" disabled={!temp}>
+        <button
+          className="btn btn-cta"
+          type="submit"
+          disabled={!uploadedResume}
+        >
           Proceed
         </button>
       </form>

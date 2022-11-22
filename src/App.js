@@ -9,8 +9,9 @@ import Edit from "./pages/Edit";
 import Stored from "./pages/Stored";
 import NotFound from "./pages/NotFound";
 import LoadingSpinner from "./components/LoadingSpinner";
+
 import useFetch from "./hooks/useFetch";
-import { getStoredValues } from "./helpers/helpers";
+import { getStoredValues, getDataFromLS } from "./helpers/helpers";
 
 const inititalFormValues = {
   name: "",
@@ -26,9 +27,7 @@ function App() {
   const [formValues, setFormValues] = useState(inititalFormValues);
 
   const [values, setValues] = useState(getStoredValues() || formValues);
-  const [resumes, setResumes] = useState(
-    JSON.parse(localStorage.getItem("all-resumes")) || []
-  );
+  const [resumes, setResumes] = useState(getDataFromLS("all-resumes") || []);
 
   useEffect(() => {
     if (fetchedData && Object.keys(fetchedData).length !== 0) {

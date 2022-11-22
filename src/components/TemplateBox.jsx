@@ -37,6 +37,7 @@ const TemplateBox = ({
           education={education}
         />
       )}
+
       {theme?.name === "Blueprint" && (
         <BlueprintTemplate
           color={colourNameToHex(pickedColor)}
