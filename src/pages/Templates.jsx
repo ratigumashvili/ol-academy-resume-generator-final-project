@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { createSearchParams, useNavigate } from "react-router-dom";
+
 import ColorPicker from "../components/ColorPicker";
 import TemplateBox from "../components/TemplateBox";
 
 const Templates = ({ setValues, fetchedData }) => {
+  const [pallete, setPallete] = useState([]);
   const [currentPallete, setCurrentPallete] = useState(0);
   const [pickedColor, setPickedColor] = useState("classicblack");
+
   const [allThemes, setAllthemes] = useState([]);
   const [currentTheme, setCurrentTheme] = useState(0);
   const [theme, setTheme] = useState(null);
-  const [pallete, setPallete] = useState([]);
 
   const [formValues, setFormValues] = useState({});
 
@@ -34,11 +36,9 @@ const Templates = ({ setValues, fetchedData }) => {
   };
 
   const handleThemeChange = () => {
-    if (currentTheme === allThemes?.length - 1) {
-      setCurrentTheme(0);
-    } else {
-      setCurrentTheme(currentTheme + 1);
-    }
+    setCurrentTheme(
+      currentTheme === allThemes?.length - 1 ? 0 : currentTheme + 1
+    );
     setTheme(allThemes?.[currentTheme]);
   };
 
@@ -50,8 +50,8 @@ const Templates = ({ setValues, fetchedData }) => {
         color: pickedColor,
       }).toString(),
     });
-    const newObj = { theme: theme.name, color: pickedColor };
-    localStorage.setItem("template", JSON.stringify(newObj));
+    const newResume = { theme: theme.name, color: pickedColor };
+    localStorage.setItem("template", JSON.stringify(newResume));
     setValues(formValues);
   };
 
