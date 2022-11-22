@@ -152,7 +152,9 @@ const Create = ({ values, setValues, fetchedData }) => {
             <HiQuestionMarkCircle />
           </button>
         </h2>
+
         {isShowing && <ModalHelp closeModal={closeModal} modalRef={modalRef} />}
+
         <div
           className="preview"
           style={
@@ -170,6 +172,7 @@ const Create = ({ values, setValues, fetchedData }) => {
               education={values?.education}
             />
           )}
+
           {theme === "Blueprint" && (
             <BlueprintTemplate
               color={colourNameToHex(color)}
