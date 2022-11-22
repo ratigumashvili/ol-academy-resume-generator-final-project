@@ -12,6 +12,7 @@ import ProgressBar from "../components/ProgressBar";
 import ResumeFormControlls from "../components/ResumeFormControlls";
 import AngoraTemplate from "../components/AngoraTemplate";
 import BlueprintTemplate from "../components/BlueprintTemplate";
+
 import ModalHelp from "../components/ModalHelp";
 import useModal from "../hooks/useModal";
 import {
@@ -43,13 +44,11 @@ const Create = ({ values, setValues, fetchedData }) => {
     localStorage.setItem("form", JSON.stringify(values));
   }, [values]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const handleInputChange = ({ target: { value, name } }) =>
     setValues({
       ...values,
       [name]: value,
     });
-  };
 
   useEffect(() => {
     setProgress(getProgressBar(fieldsetPosition + 1, fieldSetName.length));
