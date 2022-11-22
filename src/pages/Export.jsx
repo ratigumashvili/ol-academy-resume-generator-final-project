@@ -12,7 +12,7 @@ import exportAsJson from "../helpers/getJsonData";
 import useModal from "../hooks/useModal";
 import { formatted_date, colourNameToHex } from "../helpers/helpers";
 
-const Export = ({ resumes, setResumes, setValues, getFormData }) => {
+const Export = ({ resumes, setResumes, updateValues }) => {
   const data = JSON.parse(localStorage.getItem("generatedResume"));
   const { contacts, education, experience, name, proffSummary, skills } =
     data[0];
@@ -39,7 +39,7 @@ const Export = ({ resumes, setResumes, setValues, getFormData }) => {
       color: color,
     };
     setResumes([...resumes, newResume]);
-    setValues(getFormData);
+    updateValues();
     localStorage.removeItem("form");
   };
 

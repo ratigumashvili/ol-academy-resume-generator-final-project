@@ -11,8 +11,20 @@ import NotFound from "./pages/NotFound";
 import LoadingSpinner from "./components/LoadingSpinner";
 import useFetch from "./hooks/useFetch";
 
+const inititalFormValues = {
+  name: "",
+  contacts: "",
+  proffSummary: "",
+  skills: "",
+  experience: "",
+  education: "",
+};
+
 function App() {
-  const getFormData = () => {
+  const { fetchedData, loading } = useFetch();
+  const [formValues, setFormValues] = useState(inititalFormValues);
+
+  const getStoredValues = () => {
     const storedValues = localStorage.getItem("form");
     if (!storedValues) {
       return formValues;
@@ -20,29 +32,16 @@ function App() {
     return JSON.parse(storedValues);
   };
 
-  const { fetchedData, loading } = useFetch();
-  const [formValues, setFormValues] = useState({
-    name: "",
-    contacts: "",
-    proffSummary: "",
-    skills: "",
-    experience: "",
-    education: "",
-  });
-  const [values, setValues] = useState(getFormData);
+  const [values, setValues] = useState(getStoredValues() || formValues);
   const [resumes, setResumes] = useState(
     JSON.parse(localStorage.getItem("all-resumes")) || []
   );
 
   useEffect(() => {
     if (fetchedData && Object.keys(fetchedData).length !== 0) {
-      setFormValues(fetchedData.formValues);
+      setFormValues(fetchedData?.formValues);
     }
   }, [fetchedData]);
-
-  if (loading) {
-    return <LoadingSpinner />;
-  }
 
   return (
     <div className="App container">
@@ -55,17 +54,25 @@ function App() {
         <Route
           path="/choose-template"
           element={
-            <Templates setValues={setValues} fetchedData={fetchedData} />
+            loading ? (
+              <LoadingSpinner />
+            ) : (
+              <Templates setValues={setValues} fetchedData={fetchedData} />
+            )
           }
         />
         <Route
           path="/create"
           element={
-            <Create
-              values={values}
-              setValues={setValues}
-              fetchedData={fetchedData}
-            />
+            loading ? (
+              <LoadingSpinner />
+            ) : (
+              <Create
+                values={values}
+                setValues={setValues}
+                fetchedData={fetchedData}
+              />
+            )
           }
         />
         <Route
@@ -74,8 +81,7 @@ function App() {
             <Export
               resumes={resumes}
               setResumes={setResumes}
-              setValues={setValues}
-              getFormData={getFormData}
+              updateValues={() => setValues(getStoredValues() || formValues)}
             />
           }
         />
