@@ -10,6 +10,7 @@ import Stored from "./pages/Stored";
 import NotFound from "./pages/NotFound";
 import LoadingSpinner from "./components/LoadingSpinner";
 import useFetch from "./hooks/useFetch";
+import { getStoredValues } from "./helpers/helpers";
 
 const inititalFormValues = {
   name: "",
@@ -23,14 +24,6 @@ const inititalFormValues = {
 function App() {
   const { fetchedData, loading } = useFetch();
   const [formValues, setFormValues] = useState(inititalFormValues);
-
-  const getStoredValues = () => {
-    const storedValues = localStorage.getItem("form");
-    if (!storedValues) {
-      return formValues;
-    }
-    return JSON.parse(storedValues);
-  };
 
   const [values, setValues] = useState(getStoredValues() || formValues);
   const [resumes, setResumes] = useState(
