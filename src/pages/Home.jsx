@@ -3,20 +3,19 @@ import { Link, createSearchParams, useNavigate } from "react-router-dom";
 
 const Home = ({ resumes }) => {
   const [local, setLocal] = useState({});
-  const [temp, setTemp] = useState(null);
+  const [lastAdded, setLastAdded] = useState(null);
+
   const template = localStorage.getItem("template");
   const formValues = localStorage.getItem("form");
 
   useEffect(() => {
-    if (!template || !formValues) {
-      return;
-    }
+    if ([template, formValues].some((item) => !item)) return;
     setLocal(JSON.parse(localStorage.getItem("template")));
   }, [formValues, template]);
 
   useEffect(() => {
     if (resumes.length !== 0) {
-      setTemp(resumes.slice(-1)[0]);
+      setLastAdded(resumes.slice(-1)[0]);
     }
   }, [resumes]);
 
@@ -47,11 +46,11 @@ const Home = ({ resumes }) => {
           </button>
         )}
       </div>
-      {temp && (
+      {lastAdded && (
         <div className="homepage__bottom">
           <h3 className="component-heading">Last added resume</h3>
           <Link to="/stored_resumes">
-            <b>Name</b>: {temp.data.name} <b>Date</b>: {temp.time}
+            <b>Name</b>: {lastAdded.data.name} <b>Date</b>: {lastAdded.time}
           </Link>
         </div>
       )}

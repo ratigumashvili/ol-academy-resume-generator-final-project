@@ -5,6 +5,7 @@ const ProgressBar = ({ progress, color }) => {
         className="bar"
         style={{
           width: `${progress.toFixed(2)}%`,
+          transition: "0.25s ease",
           backgroundColor: color,
         }}
       ></span>

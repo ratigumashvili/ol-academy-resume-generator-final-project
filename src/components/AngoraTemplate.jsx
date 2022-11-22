@@ -1,37 +1,45 @@
 import ReactMarkdown from "react-markdown";
 
-const AngoraTemplate = (props) => {
+const AngoraTemplate = ({
+  color,
+  name,
+  contacts,
+  proffSumarry,
+  skills,
+  experience,
+  education,
+}) => {
   return (
     <div className="cv-template angora">
-      {props.name && <h1 style={{ color: `${props.color}` }}>{props.name}</h1>}
-      {props.contacts && (
+      {name && <h1 style={{ color: `${color}` }}>{name}</h1>}
+      {contacts && (
         <>
-          <h2 style={{ color: `${props.color}` }}>Contacts</h2>
-          <ReactMarkdown>{props.contacts}</ReactMarkdown>
+          <h2 style={{ color: `${color}` }}>Contacts</h2>
+          <ReactMarkdown>{contacts}</ReactMarkdown>
         </>
       )}
-      {props.proffSumarry && (
+      {proffSumarry && (
         <>
-          <h2 style={{ color: `${props.color}` }}>Professional Sumarry</h2>
-          <ReactMarkdown>{props.proffSumarry}</ReactMarkdown>
+          <h2 style={{ color: `${color}` }}>Professional Sumarry</h2>
+          <ReactMarkdown>{proffSumarry}</ReactMarkdown>
         </>
       )}
-      {props.skills && (
+      {skills && (
         <>
-          <h2 style={{ color: `${props.color}` }}>Skills</h2>
-          <ReactMarkdown>{props.skills}</ReactMarkdown>
+          <h2 style={{ color: `${color}` }}>Skills</h2>
+          <ReactMarkdown>{skills}</ReactMarkdown>
         </>
       )}
-      {props.experience && (
+      {experience && (
         <>
-          <h2 style={{ color: `${props.color}` }}>Experience</h2>
-          <ReactMarkdown>{props.experience}</ReactMarkdown>
+          <h2 style={{ color: `${color}` }}>Experience</h2>
+          <ReactMarkdown>{experience}</ReactMarkdown>
         </>
       )}
-      {props.education && (
+      {education && (
         <>
-          <h2 style={{ color: `${props.color}` }}>Education</h2>
-          <ReactMarkdown>{props.education}</ReactMarkdown>
+          <h2 style={{ color: `${color}` }}>Education</h2>
+          <ReactMarkdown>{education}</ReactMarkdown>
         </>
       )}
     </div>

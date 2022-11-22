@@ -1,41 +1,49 @@
 import ReactMarkdown from "react-markdown";
 
-const BlueprintTemplate = (props) => {
+const BlueprintTemplate = ({
+  color,
+  name,
+  contacts,
+  proffSumarry,
+  skills,
+  experience,
+  education,
+}) => {
   return (
     <div className="cv-template blueprint">
-      {props.name && <h1 style={{ color: `${props.color}` }}>{props.name}</h1>}
+      {name && <h1 style={{ color: `${color}` }}>{name}</h1>}
       <div className="content">
         <div className="left">
-          {props.contacts && (
+          {contacts && (
             <>
-              <h2 style={{ color: `${props.color}` }}>Contacts</h2>
-              <ReactMarkdown>{props.contacts}</ReactMarkdown>
+              <h2 style={{ color: `${color}` }}>Contacts</h2>
+              <ReactMarkdown>{contacts}</ReactMarkdown>
             </>
           )}
-          {props.proffSumarry && (
+          {proffSumarry && (
             <>
-              <h2 style={{ color: `${props.color}` }}>Professional summary</h2>
-              <ReactMarkdown>{props.proffSumarry}</ReactMarkdown>
+              <h2 style={{ color: `${color}` }}>Professional summary</h2>
+              <ReactMarkdown>{proffSumarry}</ReactMarkdown>
             </>
           )}
-          {props.skills && (
+          {skills && (
             <>
-              <h2 style={{ color: `${props.color}` }}>Skills</h2>
-              <ReactMarkdown>{props.skills}</ReactMarkdown>
+              <h2 style={{ color: `${color}` }}>Skills</h2>
+              <ReactMarkdown>{skills}</ReactMarkdown>
             </>
           )}
         </div>
         <div className="right">
-          {props.experience && (
+          {experience && (
             <>
-              <h2 style={{ color: `${props.color}` }}>Experience</h2>
-              <ReactMarkdown>{props.experience}</ReactMarkdown>
+              <h2 style={{ color: `${color}` }}>Experience</h2>
+              <ReactMarkdown>{experience}</ReactMarkdown>
             </>
           )}
-          {props.education && (
+          {education && (
             <>
-              <h2 style={{ color: `${props.color}` }}>Education</h2>
-              <ReactMarkdown>{props.education}</ReactMarkdown>
+              <h2 style={{ color: `${color}` }}>Education</h2>
+              <ReactMarkdown>{education}</ReactMarkdown>
             </>
           )}
         </div>

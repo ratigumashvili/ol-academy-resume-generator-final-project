@@ -12,6 +12,7 @@ import ProgressBar from "../components/ProgressBar";
 import ResumeFormControlls from "../components/ResumeFormControlls";
 import AngoraTemplate from "../components/AngoraTemplate";
 import BlueprintTemplate from "../components/BlueprintTemplate";
+
 import ModalHelp from "../components/ModalHelp";
 import useModal from "../hooks/useModal";
 import {
@@ -43,67 +44,81 @@ const Create = ({ values, setValues, fetchedData }) => {
     localStorage.setItem("form", JSON.stringify(values));
   }, [values]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const handleInputChange = ({ target: { value, name } }) =>
     setValues({
       ...values,
       [name]: value,
     });
-  };
 
   useEffect(() => {
-    const prog = getProgressBar(fieldsetPosition + 1, fieldSetName.length);
-    setProgress(prog);
+    setProgress(getProgressBar(fieldsetPosition + 1, fieldSetName.length));
   }, [fieldsetPosition, fieldSetName.length]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (getEmptyValues(values)) {
-      return;
-    }
-    const newObj = [values, theme, color];
-    localStorage.setItem("generatedResume", JSON.stringify(newObj));
+    if (getEmptyValues(values)) return;
+
+    const generatedResume = [values, theme, color];
+    localStorage.setItem("generatedResume", JSON.stringify(generatedResume));
     localStorage.removeItem("form");
     navigate("/export");
   };
 
   const displayFieldset = () => {
-    if (fieldsetPosition === 0) {
-      return (
-        <NameField handleInputChange={handleInputChange} values={values} />
-      );
-    }
-    if (fieldsetPosition === 1) {
-      return (
-        <ContactsField handleInputChange={handleInputChange} values={values} />
-      );
-    }
-    if (fieldsetPosition === 2) {
-      return (
-        <ProffesionalSummaryField
-          handleInputChange={handleInputChange}
-          values={values}
-        />
-      );
-    }
-    if (fieldsetPosition === 3) {
-      return (
-        <SkillsField handleInputChange={handleInputChange} values={values} />
-      );
-    }
-    if (fieldsetPosition === 4) {
-      return (
-        <ExperienceField
-          handleInputChange={handleInputChange}
-          values={values}
-        />
-      );
-    }
-    if (fieldsetPosition === 5) {
-      return (
-        <EducationField handleInputChange={handleInputChange} values={values} />
-      );
-    }
+    const fieldPositionMaps = [
+      {
+        stepIndex: 0,
+        component: (
+          <NameField handleInputChange={handleInputChange} values={values} />
+        ),
+      },
+      {
+        stepIndex: 1,
+        component: (
+          <ContactsField
+            handleInputChange={handleInputChange}
+            values={values}
+          />
+        ),
+      },
+      {
+        stepIndex: 2,
+        component: (
+          <ProffesionalSummaryField
+            handleInputChange={handleInputChange}
+            values={values}
+          />
+        ),
+      },
+      {
+        stepIndex: 3,
+        component: (
+          <SkillsField handleInputChange={handleInputChange} values={values} />
+        ),
+      },
+      {
+        stepIndex: 4,
+        component: (
+          <ExperienceField
+            handleInputChange={handleInputChange}
+            values={values}
+          />
+        ),
+      },
+      {
+        stepIndex: 5,
+        component: (
+          <EducationField
+            handleInputChange={handleInputChange}
+            values={values}
+          />
+        ),
+      },
+    ];
+
+    return fieldPositionMaps.find(
+      (fieldSet) => fieldSet.stepIndex === fieldsetPosition
+    ).component;
   };
 
   return (
@@ -136,7 +151,9 @@ const Create = ({ values, setValues, fetchedData }) => {
             <HiQuestionMarkCircle />
           </button>
         </h2>
+
         {isShowing && <ModalHelp closeModal={closeModal} modalRef={modalRef} />}
+
         <div
           className="preview"
           style={
@@ -154,6 +171,7 @@ const Create = ({ values, setValues, fetchedData }) => {
               education={values?.education}
             />
           )}
+
           {theme === "Blueprint" && (
             <BlueprintTemplate
               color={colourNameToHex(color)}

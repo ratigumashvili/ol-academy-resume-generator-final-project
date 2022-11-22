@@ -8,8 +8,8 @@ const useModal = (ref) => {
   }, [isShowing]);
 
   useEffect(() => {
-    const handleOutsideClick = (e) => {
-      if (e.target === ref.current) {
+    const handleOutsideClick = ({ target }) => {
+      if (target === ref.current) {
         toggle();
       }
     };

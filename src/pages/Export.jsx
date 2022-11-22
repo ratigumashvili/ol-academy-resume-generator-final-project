@@ -12,12 +12,14 @@ import exportAsJson from "../helpers/getJsonData";
 import useModal from "../hooks/useModal";
 import { formatted_date, colourNameToHex } from "../helpers/helpers";
 
-const Export = ({ resumes, setResumes, setValues, getFormData }) => {
+const Export = ({ resumes, setResumes, updateValues }) => {
   const data = JSON.parse(localStorage.getItem("generatedResume"));
-  const { contacts, education, experience, name, proffSummary, skills } =
-    data[0];
-  const theme = data[1];
-  const color = data[2];
+
+  const [
+    { contacts, education, experience, name, proffSummary, skills },
+    theme,
+    color,
+  ] = data;
 
   const exportRef = useRef();
 
@@ -35,11 +37,11 @@ const Export = ({ resumes, setResumes, setValues, getFormData }) => {
       id: uuid(),
       data: data[0],
       time: formatted_date(),
-      theme: theme,
-      color: color,
+      theme,
+      color,
     };
     setResumes([...resumes, newResume]);
-    setValues(getFormData);
+    updateValues();
     localStorage.removeItem("form");
   };
 
@@ -55,6 +57,7 @@ const Export = ({ resumes, setResumes, setValues, getFormData }) => {
   return (
     <div>
       <h2 className="component-heading">Export generated resume</h2>
+
       {isShowing && (
         <ModalNotifiaction
           closeModal={closeModal}
@@ -62,6 +65,7 @@ const Export = ({ resumes, setResumes, setValues, getFormData }) => {
           navigateToHome={navigateToHome}
         />
       )}
+
       <div className="preview-export" ref={exportRef}>
         {theme === "Angora" && (
           <AngoraTemplate
@@ -74,6 +78,7 @@ const Export = ({ resumes, setResumes, setValues, getFormData }) => {
             education={education}
           />
         )}
+
         {theme === "Blueprint" && (
           <BlueprintTemplate
             color={colourNameToHex(color)}

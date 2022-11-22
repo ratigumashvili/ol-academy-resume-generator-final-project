@@ -37,8 +37,28 @@ export const colourNameToHex = (colour) => {
   if (!colour) {
     return colours.classicblack;
   }
-  if (typeof colours[colour.toLowerCase().replaceAll(/\s/g, "")] != "undefined")
+  if (
+    typeof colours[colour.toLowerCase().replaceAll(/\s/g, "")] !== "undefined"
+  )
     return colours[colour.toLowerCase().replaceAll(/\s/g, "")];
 
   return false;
+};
+
+export const resumeSort = (a, b) => {
+  return b.data.name !== a.data.name
+    ? a.data.name > b.data.name
+      ? 1
+      : -1
+    : b.time > a.time
+    ? 1
+    : -1;
+};
+
+export const getStoredValues = () => {
+  const storedValues = localStorage.getItem("form");
+  if (!storedValues) {
+    return null;
+  }
+  return JSON.parse(storedValues);
 };
