@@ -18,24 +18,28 @@ const AngoraTemplate = ({
           <ReactMarkdown>{contacts}</ReactMarkdown>
         </>
       )}
+
       {proffSumarry && (
         <>
           <h2 style={{ color: `${color}` }}>Professional Sumarry</h2>
           <ReactMarkdown>{proffSumarry}</ReactMarkdown>
         </>
       )}
+
       {skills && (
         <>
           <h2 style={{ color: `${color}` }}>Skills</h2>
           <ReactMarkdown>{skills}</ReactMarkdown>
         </>
       )}
+
       {experience && (
         <>
           <h2 style={{ color: `${color}` }}>Experience</h2>
           <ReactMarkdown>{experience}</ReactMarkdown>
         </>
       )}
+
       {education && (
         <>
           <h2 style={{ color: `${color}` }}>Education</h2>
