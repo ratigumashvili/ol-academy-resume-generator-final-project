@@ -5,6 +5,16 @@ import { HiX } from "react-icons/hi";
 import ContextMenu from "../components/ContextMenu";
 import useContextMenu from "../hooks/useContextMenu";
 
+const resumeSort = (a, b) => {
+  return b.data.name !== a.data.name
+    ? a.data.name > b.data.name
+      ? 1
+      : -1
+    : b.time > a.time
+    ? 1
+    : -1;
+};
+
 const Stored = ({ resumes, setResumes }) => {
   const handleRemoveItem = (itemToDelete) => {
     const updatedArray = resumes.filter(({ id }) => id !== itemToDelete);
@@ -35,11 +45,10 @@ const Stored = ({ resumes, setResumes }) => {
                 ? 1
                 : -1
             )
-            .map((item) => {
-              const { id, time } = item;
+            .map(({ id, time, data }) => {
               return (
                 <li key={id} id={id}>
-                  <b>Name</b>: {item.data.name} &nbsp; <b>Time</b>: {time}
+                  <b>Name</b>: {data.name} &nbsp; <b>Time</b>: {time}
                   <button
                     onClick={() => handleRemoveItem(id)}
                     className="btn btn-danger"
