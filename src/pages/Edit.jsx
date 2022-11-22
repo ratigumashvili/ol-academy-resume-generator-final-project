@@ -22,15 +22,15 @@ const Edit = ({ setValues }) => {
 
   const handleNavigateWithParams = (e) => {
     e.preventDefault();
+    const [, theme, color] = temp;
     navigate({
       pathname: "/create",
       search: createSearchParams({
-        theme: temp[1],
-        color: temp[2],
+        theme,
+        color,
       }).toString(),
     });
-    const newObj = { theme: temp[1], color: temp[2] };
-    localStorage.setItem("template", JSON.stringify(newObj));
+    localStorage.setItem("template", JSON.stringify({ theme, color }));
   };
 
   return (
