@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, createSearchParams, useNavigate } from "react-router-dom";
 
+import { getDataFromLS } from "../helpers/helpers";
+
 const Home = ({ resumes }) => {
   const [local, setLocal] = useState({});
   const [lastAdded, setLastAdded] = useState(null);
@@ -10,7 +12,7 @@ const Home = ({ resumes }) => {
 
   useEffect(() => {
     if ([template, formValues].some((item) => !item)) return;
-    setLocal(JSON.parse(localStorage.getItem("template")));
+    setLocal(getDataFromLS("template"));
   }, [formValues, template]);
 
   useEffect(() => {

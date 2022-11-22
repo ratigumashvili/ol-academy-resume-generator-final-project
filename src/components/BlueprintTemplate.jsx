@@ -20,12 +20,14 @@ const BlueprintTemplate = ({
               <ReactMarkdown>{contacts}</ReactMarkdown>
             </>
           )}
+
           {proffSumarry && (
             <>
               <h2 style={{ color: `${color}` }}>Professional summary</h2>
               <ReactMarkdown>{proffSumarry}</ReactMarkdown>
             </>
           )}
+
           {skills && (
             <>
               <h2 style={{ color: `${color}` }}>Skills</h2>
@@ -40,6 +42,7 @@ const BlueprintTemplate = ({
               <ReactMarkdown>{experience}</ReactMarkdown>
             </>
           )}
+
           {education && (
             <>
               <h2 style={{ color: `${color}` }}>Education</h2>
