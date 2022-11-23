@@ -39,6 +39,7 @@ const Templates = ({ setValues, fetchedData }) => {
     }
   }, [fetchedData]);
 
+  const { pallete, currentPallete, pickedColor } = fetchPallete;
   const { allThemes, currentTheme, theme } = fetchTheme;
 
   useEffect(() => {
@@ -72,10 +73,10 @@ const Templates = ({ setValues, fetchedData }) => {
       pathname: "/create",
       search: createSearchParams({
         theme: theme.name,
-        color: fetchPallete.pickedColor,
+        color: pickedColor,
       }).toString(),
     });
-    const newResume = { theme: theme.name, color: fetchPallete.pickedColor };
+    const newResume = { theme: theme.name, color: pickedColor };
     localStorage.setItem("template", JSON.stringify(newResume));
     setValues(formValues);
   };
@@ -87,16 +88,16 @@ const Templates = ({ setValues, fetchedData }) => {
           <h2 className="component-heading">{theme?.name}</h2>
           <p>{theme?.desc}</p>
           <ColorPicker
-            pallete={fetchPallete.pallete}
-            currentPallete={fetchPallete.currentPallete}
-            pickedColor={fetchPallete.pickedColor}
+            pallete={pallete}
+            currentPallete={currentPallete}
+            pickedColor={pickedColor}
             handlePickColor={handlePickColor}
           />
         </div>
         <div className="col-sm-12 col-md-6 mbc-2">
           <TemplateBox
             fetchedData={fetchedData}
-            pickedColor={fetchPallete.pickedColor}
+            pickedColor={pickedColor}
             theme={theme}
             handleThemeChange={handleThemeChange}
           />
