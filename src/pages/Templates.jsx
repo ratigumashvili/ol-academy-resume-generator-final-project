@@ -5,17 +5,19 @@ import ColorPicker from "../components/ColorPicker";
 import TemplateBox from "../components/TemplateBox";
 
 const Templates = ({ setValues, fetchedData }) => {
+  const [formValues, setFormValues] = useState({});
+
   const [fetchPallete, setFetchPallete] = useState({
     pallete: [],
     currentPallete: 0,
     pickedColor: "classicblack",
   });
 
-  const [allThemes, setAllthemes] = useState([]);
-  const [currentTheme, setCurrentTheme] = useState(0);
-  const [theme, setTheme] = useState(null);
-
-  const [formValues, setFormValues] = useState({});
+  const [fetchTheme, setFetchTheme] = useState({
+    allThemes: [],
+    currentTheme: 0,
+    theme: null,
+  });
 
   const navigate = useNavigate();
 
@@ -23,17 +25,26 @@ const Templates = ({ setValues, fetchedData }) => {
     if (fetchedData && Object.keys(fetchedData).length !== 0) {
       setFormValues(fetchedData.formValues);
 
-      setTheme(fetchedData.themes[0]);
-      setAllthemes(fetchedData.themes);
-
       setFetchPallete({
         pallete: fetchedData.pallete,
+      });
+
+      setFetchTheme((prev) => {
+        return {
+          ...prev,
+          theme: fetchedData.themes[0],
+          allThemes: fetchedData.themes,
+        };
       });
     }
   }, [fetchedData]);
 
+  const { allThemes, currentTheme, theme } = fetchTheme;
+
   useEffect(() => {
-    setTheme(allThemes?.[currentTheme]);
+    setFetchTheme((prev) => {
+      return { ...prev, theme: allThemes?.[currentTheme] };
+    });
   }, [currentTheme, allThemes]);
 
   const handlePickColor = ({ id, name }) => {
@@ -45,10 +56,15 @@ const Templates = ({ setValues, fetchedData }) => {
   };
 
   const handleThemeChange = () => {
-    setCurrentTheme(
-      currentTheme === allThemes?.length - 1 ? 0 : currentTheme + 1
-    );
-    setTheme(allThemes?.[currentTheme]);
+    if (currentTheme === allThemes?.length - 1) {
+      setFetchTheme((prev) => {
+        return { ...prev, currentTheme: 0 };
+      });
+    } else {
+      setFetchTheme((prev) => {
+        return { ...prev, currentTheme: +1 };
+      });
+    }
   };
 
   const handleNavigateWithParams = () => {
