@@ -21,9 +21,10 @@ const Templates = ({ setValues, fetchedData }) => {
 
   useEffect(() => {
     if (fetchedData && Object.keys(fetchedData).length !== 0) {
+      setFormValues(fetchedData.formValues);
+
       setTheme(fetchedData.themes[0]);
       setAllthemes(fetchedData.themes);
-      setFormValues(fetchedData.formValues);
 
       setFetchPallete({
         pallete: fetchedData.pallete,
