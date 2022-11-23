@@ -5,9 +5,11 @@ import ColorPicker from "../components/ColorPicker";
 import TemplateBox from "../components/TemplateBox";
 
 const Templates = ({ setValues, fetchedData }) => {
-  const [pallete, setPallete] = useState([]);
-  const [currentPallete, setCurrentPallete] = useState(0);
-  const [pickedColor, setPickedColor] = useState("classicblack");
+  const [fetchPallete, setFetchPallete] = useState({
+    pallete: [],
+    currentPallete: 0,
+    pickedColor: "classicblack",
+  });
 
   const [allThemes, setAllthemes] = useState([]);
   const [currentTheme, setCurrentTheme] = useState(0);
@@ -21,8 +23,11 @@ const Templates = ({ setValues, fetchedData }) => {
     if (fetchedData && Object.keys(fetchedData).length !== 0) {
       setTheme(fetchedData.themes[0]);
       setAllthemes(fetchedData.themes);
-      setPallete(fetchedData.pallete);
       setFormValues(fetchedData.formValues);
+
+      setFetchPallete({
+        pallete: fetchedData.pallete,
+      });
     }
   }, [fetchedData]);
 
@@ -31,8 +36,11 @@ const Templates = ({ setValues, fetchedData }) => {
   }, [currentTheme, allThemes]);
 
   const handlePickColor = ({ id, name }) => {
-    setCurrentPallete(id - 1);
-    setPickedColor(name.toLowerCase().replaceAll(/\s/g, ""));
+    setFetchPallete({
+      ...fetchPallete,
+      currentPallete: id - 1,
+      pickedColor: name.toLowerCase().replaceAll(/\s/g, ""),
+    });
   };
 
   const handleThemeChange = () => {
@@ -47,10 +55,10 @@ const Templates = ({ setValues, fetchedData }) => {
       pathname: "/create",
       search: createSearchParams({
         theme: theme.name,
-        color: pickedColor,
+        color: fetchPallete.pickedColor,
       }).toString(),
     });
-    const newResume = { theme: theme.name, color: pickedColor };
+    const newResume = { theme: theme.name, color: fetchPallete.pickedColor };
     localStorage.setItem("template", JSON.stringify(newResume));
     setValues(formValues);
   };
@@ -62,16 +70,16 @@ const Templates = ({ setValues, fetchedData }) => {
           <h2 className="component-heading">{theme?.name}</h2>
           <p>{theme?.desc}</p>
           <ColorPicker
-            pallete={pallete}
-            currentPallete={currentPallete}
-            pickedColor={pickedColor}
+            pallete={fetchPallete.pallete}
+            currentPallete={fetchPallete.currentPallete}
+            pickedColor={fetchPallete.pickedColor}
             handlePickColor={handlePickColor}
           />
         </div>
         <div className="col-sm-12 col-md-6 mbc-2">
           <TemplateBox
             fetchedData={fetchedData}
-            pickedColor={pickedColor}
+            pickedColor={fetchPallete.pickedColor}
             theme={theme}
             handleThemeChange={handleThemeChange}
           />
