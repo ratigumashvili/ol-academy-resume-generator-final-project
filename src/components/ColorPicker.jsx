@@ -12,27 +12,28 @@ const ColorPicker = ({
         Color <span>- {pallete[currentPallete]?.name}</span>
       </h4>
       <div className="color-picker-colors">
-        {pallete.map((item) => (
-          <div
-            key={item.id}
-            className="color-picker-item"
-            style={{
-              backgroundColor: colourNameToHex(item.name),
-            }}
-          >
-            <input
-              type="radio"
-              name="color"
-              value={colourNameToHex(item.name)}
-              onChange={() => {
-                handlePickColor(item);
+        {pallete.map((item) => {
+          const { id, name } = item;
+          return (
+            <div
+              key={id}
+              className="color-picker-item"
+              style={{
+                backgroundColor: colourNameToHex(name),
               }}
-              checked={
-                colourNameToHex(item.name) === colourNameToHex(pickedColor)
-              }
-            />
-          </div>
-        ))}
+            >
+              <input
+                type="radio"
+                name="color"
+                value={colourNameToHex(name)}
+                onChange={() => {
+                  handlePickColor(item);
+                }}
+                checked={colourNameToHex(name) === colourNameToHex(pickedColor)}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

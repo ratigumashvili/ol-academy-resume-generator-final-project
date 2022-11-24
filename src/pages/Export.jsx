@@ -10,10 +10,14 @@ import ModalNotifiaction from "../components/ModalNotifiaction";
 import exportAsImage from "../helpers/getHtmlToCanvas";
 import exportAsJson from "../helpers/getJsonData";
 import useModal from "../hooks/useModal";
-import { formatted_date, colourNameToHex } from "../helpers/helpers";
+import {
+  formatted_date,
+  colourNameToHex,
+  getDataFromLS,
+} from "../helpers/helpers";
 
 const Export = ({ resumes, setResumes, updateValues }) => {
-  const data = JSON.parse(localStorage.getItem("generatedResume"));
+  const data = getDataFromLS("generatedResume");
 
   const [
     { contacts, education, experience, name, proffSummary, skills },
