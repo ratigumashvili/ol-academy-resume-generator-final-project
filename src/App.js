@@ -11,7 +11,7 @@ import NotFound from "./pages/NotFound";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 import useFetch from "./hooks/useFetch";
-import { getStoredValues, getDataFromLS } from "./helpers/helpers";
+import { getDataFromLS } from "./helpers/helpers";
 
 const inititalFormValues = {
   name: "",
@@ -26,7 +26,7 @@ function App() {
   const { fetchedData, loading } = useFetch();
   const [formValues, setFormValues] = useState(inititalFormValues);
 
-  const [values, setValues] = useState(getStoredValues() || formValues);
+  const [values, setValues] = useState(getDataFromLS("form") || formValues);
   const [resumes, setResumes] = useState(getDataFromLS("all-resumes") || []);
 
   useEffect(() => {
@@ -73,7 +73,9 @@ function App() {
             <Export
               resumes={resumes}
               setResumes={setResumes}
-              updateValues={() => setValues(getStoredValues() || formValues)}
+              updateValues={() =>
+                setValues(getDataFromLS("form") || formValues)
+              }
             />
           }
         />

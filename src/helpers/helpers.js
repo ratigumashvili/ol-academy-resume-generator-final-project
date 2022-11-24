@@ -55,19 +55,10 @@ export const resumeSort = (a, b) => {
     : -1;
 };
 
-export const getStoredValues = () => {
-  const storedValues = localStorage.getItem("form");
-  if (!storedValues) {
-    return null;
-  }
-  return JSON.parse(storedValues);
-};
-
 export const getDataFromLS = (key) => {
   const itemStr = localStorage.getItem(key);
   if (!itemStr) {
     return null;
   }
-  const item = JSON.parse(itemStr);
-  return item;
+  return JSON.parse(itemStr);
 };
