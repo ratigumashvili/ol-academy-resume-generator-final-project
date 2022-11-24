@@ -4,16 +4,10 @@ import { Link, createSearchParams, useNavigate } from "react-router-dom";
 import { getDataFromLS } from "../helpers/helpers";
 
 const Home = ({ resumes }) => {
-  const [local, setLocal] = useState({});
   const [lastAdded, setLastAdded] = useState(null);
 
-  const template = localStorage.getItem("template");
-  const formValues = localStorage.getItem("form");
-
-  useEffect(() => {
-    if ([template, formValues].some((item) => !item)) return;
-    setLocal(getDataFromLS("template"));
-  }, [formValues, template]);
+  const template = getDataFromLS("template");
+  const formValues = getDataFromLS("form");
 
   useEffect(() => {
     if (resumes.length !== 0) {
@@ -27,8 +21,8 @@ const Home = ({ resumes }) => {
     navigate({
       pathname: "/create",
       search: createSearchParams({
-        theme: local.theme,
-        color: local.color,
+        theme: template.theme,
+        color: template.color,
       }).toString(),
     });
   };
