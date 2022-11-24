@@ -57,15 +57,9 @@ const Templates = ({ setValues, fetchedData }) => {
   };
 
   const handleThemeChange = () => {
-    if (currentTheme === allThemes?.length - 1) {
-      setFetchTheme((prev) => {
-        return { ...prev, currentTheme: 0 };
-      });
-    } else {
-      setFetchTheme((prev) => {
-        return { ...prev, currentTheme: +1 };
-      });
-    }
+    currentTheme === allThemes?.length - 1
+      ? setFetchTheme((prev) => ({ ...prev, currentTheme: 0 }))
+      : setFetchTheme((prev) => ({ ...prev, currentTheme: +1 }));
   };
 
   const handleNavigateWithParams = () => {
