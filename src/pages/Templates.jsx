@@ -25,8 +25,11 @@ const Templates = ({ setValues, fetchedData }) => {
     if (fetchedData && Object.keys(fetchedData).length !== 0) {
       setFormValues(fetchedData.formValues);
 
-      setFetchPallete({
-        pallete: fetchedData.pallete,
+      setFetchPallete((prev) => {
+        return {
+          ...prev,
+          pallete: fetchedData.pallete,
+        };
       });
 
       setFetchTheme((prev) => {
