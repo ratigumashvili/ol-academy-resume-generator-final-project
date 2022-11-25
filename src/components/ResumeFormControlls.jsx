@@ -22,7 +22,9 @@ const ResumeFormControlls = ({
           Prev
         </button>
         <button
-          className="btn"
+          className={
+            fieldsetPosition === fieldSetName.length - 1 ? "d-none" : "btn"
+          }
           style={{ backgroundColor: color }}
           type="button"
           disabled={fieldsetPosition === fieldSetName.length - 1}
@@ -33,7 +35,7 @@ const ResumeFormControlls = ({
       </div>
       {fieldsetPosition === fieldSetName.length - 1 && (
         <button
-          className="btn btn-submit"
+          className="btn btn-cta"
           type="submit"
           disabled={getEmptyValues(values)}
         >
