@@ -62,3 +62,7 @@ export const getDataFromLS = (key) => {
   }
   return JSON.parse(itemStr);
 };
+
+export const setDataToLS = (key, values) => {
+  return localStorage.setItem(key, JSON.stringify(values));
+};

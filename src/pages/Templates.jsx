@@ -4,6 +4,8 @@ import { createSearchParams, useNavigate } from "react-router-dom";
 import ColorPicker from "../components/ColorPicker";
 import TemplateBox from "../components/TemplateBox";
 
+import { setDataToLS } from "../helpers/helpers";
+
 const Templates = ({ setValues, fetchedData }) => {
   const [formValues, setFormValues] = useState({});
 
@@ -74,7 +76,7 @@ const Templates = ({ setValues, fetchedData }) => {
       }).toString(),
     });
     const newResume = { theme: theme.name, color: pickedColor };
-    localStorage.setItem("template", JSON.stringify(newResume));
+    setDataToLS("template", newResume);
     setValues(formValues);
   };
 

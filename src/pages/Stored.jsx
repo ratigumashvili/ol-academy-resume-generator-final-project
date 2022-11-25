@@ -4,13 +4,13 @@ import { HiX } from "react-icons/hi";
 
 import ContextMenu from "../components/ContextMenu";
 import useContextMenu from "../hooks/useContextMenu";
-import { resumeSort } from "../helpers/helpers";
+import { resumeSort, setDataToLS } from "../helpers/helpers";
 
 const Stored = ({ resumes, setResumes }) => {
   const handleRemoveItem = (itemToDelete) => {
     const updatedArray = resumes.filter(({ id }) => id !== itemToDelete);
     setResumes(updatedArray);
-    localStorage.setItem("all-resumes", JSON.stringify(updatedArray));
+    setDataToLS("all-resumes", updatedArray);
   };
 
   const historyListRef = useRef();

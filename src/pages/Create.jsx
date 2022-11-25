@@ -20,6 +20,7 @@ import {
   getCurrent,
   getEmptyValues,
   colourNameToHex,
+  setDataToLS,
 } from "../helpers/helpers";
 
 const Create = ({ values, setValues, fetchedData }) => {
@@ -41,7 +42,7 @@ const Create = ({ values, setValues, fetchedData }) => {
   }, [fetchedData]);
 
   useEffect(() => {
-    localStorage.setItem("form", JSON.stringify(values));
+    setDataToLS("form", values);
   }, [values]);
 
   const handleInputChange = ({ target: { value, name } }) =>
@@ -59,7 +60,7 @@ const Create = ({ values, setValues, fetchedData }) => {
     if (getEmptyValues(values)) return;
 
     const generatedResume = [values, theme, color];
-    localStorage.setItem("generatedResume", JSON.stringify(generatedResume));
+    setDataToLS("generatedResume", generatedResume);
     localStorage.removeItem("form");
     navigate("/export");
   };

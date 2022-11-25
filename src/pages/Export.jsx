@@ -14,6 +14,7 @@ import {
   formatted_date,
   colourNameToHex,
   getDataFromLS,
+  setDataToLS,
 } from "../helpers/helpers";
 
 const Export = ({ resumes, setResumes, updateValues }) => {
@@ -55,7 +56,7 @@ const Export = ({ resumes, setResumes, updateValues }) => {
   };
 
   useEffect(() => {
-    localStorage.setItem("all-resumes", JSON.stringify(resumes));
+    setDataToLS("all-resumes", resumes);
   }, [resumes]);
 
   return (

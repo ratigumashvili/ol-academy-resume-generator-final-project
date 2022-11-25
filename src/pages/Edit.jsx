@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { createSearchParams, useNavigate } from "react-router-dom";
 
+import { setDataToLS } from "../helpers/helpers";
+
 const Edit = ({ setValues }) => {
   const [uploadedResume, setUploadedResume] = useState("");
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ const Edit = ({ setValues }) => {
         color,
       }).toString(),
     });
-    localStorage.setItem("template", JSON.stringify({ theme, color }));
+    setDataToLS("template", { theme, color });
   };
 
   return (
